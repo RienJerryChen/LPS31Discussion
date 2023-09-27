@@ -1,5 +1,5 @@
 ---
-title: "MyLabJournal"
+title: "LPS/PHIL 31 Ryan Chen's Discussion Section Notes"
 output: html_document
 ---
 
@@ -17,27 +17,18 @@ output: html_document
 <div class="row" style="padding-top: 30px;">
 <div class="col-sm-6">
 
-# **My Lab Journal**
+# Introduction
 
-This is a template example for lab journaling. Students in Matt Crump's Human Cognition and Performance Lab will use this template to learn R, and other things. Students can replace this text with more fun things. People not in my lab can use this too.
+This is a collection of notes for LPS 31 Fall 2023 Discussion Sections led by Ryan Chen (Discussion Sections: Monday and Wednesday from 5-5:50 pm). All students are welcome to look at and use these notes for studying and practice.
 
-## How to use
+## Content of the Notes
 
-1. fork the repo for this website and follow instructions on read me to get set up. [https://github.com/CrumpLab/LabJournalWebsite](https://github.com/CrumpLab/LabJournalWebsite)
+These notes will typically include the material which I cover in discussion. For example, if I go over a practice problem in discussion, then that practice problem will be written up as content in these notes (with solutions). Sometimes material which I planned to cover in discussion, but which I did not have time to cover will also appear in these notes. Students will be notified of when this extra material exists. Finally, these notes will contain extra practice problems and if time permits, solutions to those problems.   
 
-2. Blog/journal what you are doing in R, by editing the Journal.Rmd. See the [Journal page](https://crumplab.github.io/LabJournalWebsite/Journal.html) for an example of what to do to get started learning R.
+## How to Use these Notes
 
-3. See the [links page](https://crumplab.github.io/LabJournalWebsite/Links.html) for lots of helpful links on learning R.
+There are three primary use cases for these notes:
 
-4. Change everything to make it your own.
-
-
-</div>
-<div class="col-sm-6">
-
-### [Crump Lab: Human Cognition and Performance](https://crumplab.github.io)
-
-<a href = "https://crumplab.github.io">
-![](images/logo.png)
-</a>
-</div>
+1. If you miss discussion and want to know what we covered in discussion, these notes will cover the core material which I discuss.
+1. If you need more practice with problems outside of homework, I will be inserting extra practice problems in these notes.
+1. If you need a quick review of core concepts, then these notes should be useful as each note will take *at most* 10-15 minutes to read.
