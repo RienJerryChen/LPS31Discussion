@@ -1,11 +1,9 @@
-name: "MyLabJournal"
+name: "LPS/Phil 31 Discussion Notes"
 navbar:
-  title: "MyLabJournal"
+  title: "LPS/Phil 31 Discussion Notes"
   left:
-    - text: "Home"
+    - text: "Intro"
       href: index.html
-    - text: "Journal"
-      href: Journal.html
-    - text: "Links"
-      href: Links.html
+    - text: "Week 2"
+      href: 01_Week2.html
 output_dir: "docs"
