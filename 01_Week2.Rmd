@@ -10,6 +10,116 @@ output:
     #code_folding: hide
 ---
 
+# What is a Proposition?
+
+The question which heads this section is actually one which is debated amongst some philosophers (primarily, philosophers of language). For this course, we will not be delving into these debates. For our purposes, propositions are what is expressed by a special kind of sentence. What kind of sentence? Well, there are a number of *different* ways to pick out these special kinds of sentences. Here are three different characterizations of propositions:
+
+1. Propositions are the sentences which can be true or false.
+2. Propositions are the sentences which we can believe to be true or false.
+3. Propositions are the sentences which purport to describe the way things are.
+
+With these three different characterizations, there are three different tests which we may use to diagnose whether or not a sentence expresses a proposition. 
+
+The first test is the "can it be true or false"-test. Given a sentence, if it makes sense to ask whether or not that sentence is true or false, then that sentence expresses a proposition. For example, consider the sentence "France is west of Germany". Does the question "Is it true or false that France is west of Germany?" make sense? In this case, it does. Hence, it expresses a proposition.
+
+The second test is the "I believe"-test. Given a sentence X, if it makes sense to say "I believe X" or "I believe that X" then X expresses a proposition. For example, consider the sentence "Willard made a mess today". Does the sentence "I believe that Willard made a mess today" make sense? In this case, it does, Hence, it expresses a proposition.
+
+The third test relies more on intuition. Given a sentence, we may ask whether or not that sentence purports to say that the world is some way. For example, consider the sentence "Electrons have negative charge". Does that sentence say that the world is some way? Yes! Hence, it is a proposition.
+
+What are some sentences which do not express propositions? Well, one common class of sentences are imperatives (also known as commands). For example, consider the sentence "Close the door!". How does such a sentence fare against our three tests? For the "can it be true or false"-test, we want to know whether or not it makes sense to ask "It is true or false that close the door". It does not! For the "I believe"-test, we want to know whether or not it makes sense to say "I believe that close the door". Again, it does not. Finally, with the third test, we can just intuitively ask ourselves whether or not the sentence "close the door!" purports to say that the world is a certain way. It certainly expresses that we desire someone to close the door, but it does not say that the door is in fact closed. Hence, it fails the third test as well.
+
+Another class of sentences which do not express propositions, are questions. Try the tests on the sentence "Can you please pass the salt?". You should come to the conclusion that such a sentence fails all three tests.
+
+It is crucial that you understand that just because a sentence expresses a proposition does not mean that it is actually the case that the sentence is true. The sentence "Humans have larger brains than blue whales" expresses a proposition, but is false.
+
+# Building More Complex Propositions
+
+Given some sentences which express propositions, we can build more complex sentences which also express propositions.
+
+**(Conjunction)** Let us use the symbol $A$ and $B$ for sentences and the symbol $\&$ for either "and" or "but". Then given that $A$ and $B$ express propositions, then $A \& B$ expresses a proposition.
+
+Consider the sentences "1 + 2 = 5" and "It is sunny today". Both express propositions (check for yourself!). We can build a more complex sentence using the conjunct "and" or "but": "1 + 2 = 5 and it is sunny today" or "1 + 2 = 5 but it is sunny today". Of course, these sound like weird sentences to say out of context but they are still sensible. For example, suppose that your friend asked you what the sum of 1 and 2 is and what the weather is like outside. If your arithmetic is *really* bad then you may very well say "1 + 2 = 5 and it is sunny today". 
+
+**(Disjunction)** 
+We continue to use capital letters like $A$ and $B$ for sentences. We shall use the symbol $\lor$ for "or" or "either... or...". Then given that $A$ and $B$ express propositions, then $A \lor B$ expresses a proposition.
+
+Consider the sentences "The coin comes up heads" and "The coin comes up tails". Again, these both express propositions. We can build a more complex sentence using the disjunct "or" or "either... or...". For example, "Either the coin comes up heads or the coin comes up tails" is a sentence expressing a proposition.
+
+**(Negation)** Let us use $\sim$ as our symbol for negation "not" or "It is not the case that...". Then given that $A$ expresses proposition, $\sim A$ expresses a proposition as well.
+
+Consider the sentence "Humans have souls". This sentence expresses a proposition. We can build a more complex sentence by negating the sentence with "It is not the case that...". For example, "It is not the case that humans have souls" is a sentence which expresses a proposition. Sometimes, the negation phrase may end up in the middle of the sentence, as in "Humans do not have souls".
+
+# Properties of Propositions
+
+**(Tautology)** A proposition expressed by a sentence is a tautology just in case it must be true (it is impossible for it to be false).
+
+Consider the sentence "Either it is sunny or it is not sunny". Is is possible for this sentence to be false? No. Therefore, the proposition expressed by this sentence is a tautology.
+
+Often, we can assess whether or not a proposition is a tautology without even considering what the sentence says. All we need to look at are the $\&, \lor$ and $\sim$ symbols which occur in the proposition when we represent it symbolically. For example, the sentence "Either it is raining or it is not raining" may be represented as $A \lor \sim A$. In fact, on reflection, you should recognize that any sentence which can be represented in the form of $A \lor \sim A$ is a tautology. 
+
+**(Contradiction)** A proposition expressed by a sentence is a contradiction just in case it must be false (it is impossible for it to be true).
+
+Consider the sentence "The dice roll resulted in 4 and that same dice roll resulted in 1". Is this possible? Can this sentence ever be true? Given that we are in our ordinary world, the dice roll can only result in one number, hence it is impossible. Therefore, it is a contradiction.
+
+Again, just by considering the symbols, we can assess whether or not a proposition is a contradiction. For example, the sentence "The envelope is opened and the envelope is not opened" may be represented as $A \& \sim A$. Again, on reflection, you should recognize that every sentence which can be represented in this form is a sentence which expresses a contradiction.
+
+**[Note]** If you are interested in how we can assess whether or not a proposition (or a collection of propositions) is a tautology or contradiction without considering their content, then take LPS 30 (Introduction to Symbolic Logic).
+
+**(Mutually Exclusive)** Two propositions are mutually exclusive just in case it is impossible for both propositions to be true concurrently.
+
+Consider the sentences "Rudolf's first single draw was the Ace of Spades" and "Rudolf's first single draw was the Jack of Hearts". Is it possible for both sentences to be true at the same time? No. The Ace of Spaces is not the Jack of Hearts.
+
+Unlike, with tautologies and contradictions, it is not in general, possible to ascertain whether or not two propositions are mutually exclusive.
+
+**(Partition)** A collection of propositions form a partition just in case it is impossible any two of the propositions in the collection to be true concurrently (this is just mutually exclusivity but for more than two propositions) and at least one of the propositions in the collection must be true (this is called exhaustivity).
+
+For example, consider a four sided die. Then consider the following sentences:
+
+* Nelson's first roll was a 1
+* Nelson's first roll was a 2
+* Nelson's first roll was a 3
+* Nelson's first roll was a 4
+
+If we consider any two of these sentences, they cannot be true at the same time. And given that we know that Nelson did roll this four sided die, at least one of these propositions is true.
+
+# Practice Problems
+
+1. Which of the following sentences express a proposition?
++ "Can you please ask Otto whether or not he is available?"
++ "This meeting is taking too long"
++ "$7 \times 2 = 14$"
++ "Tea is getting expensive these days"
++ "I believe that Gareth already went out"
++ "Tabitha told Willard that he is wrong and he got mad"
++ "The Louvre is beautiful"
++ "Three hundred years ago, King John gathered his army and marched into MadeUpLand"
++ "Either I'm going mad or everyone here is wrong."
+2. Represent the following sentences in symbolic form:
++ "Gilbert went to the mall and Ruth went out with her friends"
++ "Gilbert did not go to the mall but Ruth did go out with her friends"
++ "Either Gilbert did go to the mall or Ruth went out with her friends"
++ "Saul is not a good guy"
++ "Terence had some tea, Saul had some biscuits and Ruth had some macarons"
++ "Either Noam made up a story and lied to everyone or he is just not very smart and made a mistake"
++ "Either Ted looks up to Lewis or Tim, or Murat looks up to Jerry or Brian"
++ "Peter likes animals but he thinks all humans are evil"
+3. Come up with sentences which express propositions which are:
++ Contradictory
++ Tautologous
++ Neither a tautology nor a contradiction
++ Mutually exclusive but not a partition.
++ Mutually exclusive and a partition.
+4. Which of the following are tautologies or contradictions or neither?
++ $(A \lor \sim A)$
++ $(A \lor B)$
++ $(A \lor B \lor \sim A)$
++ $(A \& \sim A)$
++ $(A \& \sim A \& B)$
++ $\sim(A \lor \sim A)$
++ $\sim (A \& \sim A)$
++ $(A \lor B) \lor \sim (A \lor B)$
+    
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ```
