@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Week Three Discussion Notes</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">LPS/Phil 31 Discussion Notes</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Intro</a>
+</li>
+<li>
+  <a href="01_Week2.html">Week 2</a>
+</li>
+<li>
+  <a href="02_Week3.html">Week 3</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Week Three Discussion Notes</h1>
+
+</div>
+
+
+<div id="the-axioms-of-probability-theory" class="section level1">
+<h1>The Axioms of Probability Theory</h1>
+<p>There are three statements typically taken to be the axioms of
+probability theory:</p>
+<ol style="list-style-type: decimal">
+<li><strong>[Normalization] The probability of any tautology is
+1:</strong> <span class="math inline">\(P(\top) = 1\)</span>.</li>
+<li><strong>[Non-Negativity] The probability of any proposition is
+greater than or equal to 0.</strong> That is, for any <span
+class="math inline">\(A\)</span>, <span class="math inline">\(P(A) \geq
+0\)</span></li>
+<li><strong>[Additivity] The probability of the disjunction of two
+mutually exclusive propositions is the sum of their
+probabilities.</strong> That is, for mutually exclusive <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span>, <span class="math inline">\(P(A \lor
+B) = P(A) + P(B)\)</span></li>
+</ol>
+<p>These axioms stipulate what a function <span
+class="math inline">\(P\)</span> must satisfy, in order for it to count
+as a representation of probability. For our purposes, these axioms are
+foundational truths; if we encounter a function which violates any one
+of these axioms, then it is not relevant to probability theory.</p>
+</div>
+<div id="consequences-of-the-axioms" class="section level1">
+<h1>Consequences of the Axioms</h1>
+<p><strong>(Formula for Contradictions)</strong> Immediately from the
+axioms, we can show that contradictions are to be assigned probability
+0. Here is a quick proof (no need to memorize the proof; the point here
+is to show that from just three axioms, we can derive many of the other
+properties which we think that probabilities should do). We start with
+the fact that the probability of any tautology is 1: <span
+class="math display">\[
+P(\top) = 1
+\]</span> We know that if a tautology is one of the disjuncts of the
+disjunction, then the disjunction itself is a tautology (that is, if X
+is always true, then the statement “either X or Y” will also always be
+true). Therefore, by the axiom of normalization: <span
+class="math display">\[
+P(\top \lor \perp) = 1
+\]</span> We then note that any tautology <span
+class="math inline">\(\top\)</span> is mutually exclusive with any
+contradiction <span class="math inline">\(\perp\)</span>. Hence, by the
+axiom of additivity: <span class="math display">\[
+P(\top \lor \perp) = P(\top) + P(\perp)
+\]</span> Putting all the pieces together we get: <span
+class="math display">\[
+\begin{align}
+1 = 1 + P(\perp) \implies P(\perp) = 0
+\end{align}
+\]</span> <strong>(Formula for Negated Propositions)</strong> The next
+very important consequence of the axioms is a negation rule. It tells us
+what the probability of the negation of a proposition is, given that we
+know the probability of the un-negated proposition. That is: <span
+class="math display">\[
+P(\sim A) = 1 - P(A)
+\]</span> The proof for this statement is similar to the one just
+proved.</p>
+<p><strong>(General Formula for Disjunction)</strong> Another
+consequence of the axioms is an equation for any disjunction. The
+additivity axiom gives us an equation for the disjunction of mutually
+exclusive propositions. This equation tells us what the probability of
+any disjunction of statements is: <span class="math display">\[
+P(A \lor B) = P(A) + P(B) - P(A \&amp; B)
+\]</span> There is an algebraic proof of this which is not too
+difficult, but which would lengthen this note unnecessarily. In any
+case, the algebraic proof just follows the intuition which one would get
+from the pictoral representation of what is going on here. What we want
+is an equation for the light-blue shaded area, which represents <span
+class="math inline">\(P(A \lor B)\)</span>:</p>
+<center>
+<p><img src="Pictures/Week%203%20A%20or%20B.png" width="350" /></p>
+</center>
+<p>To get started, we add up the area within the A circle (shaded teal
+blue) which represents <span class="math inline">\(P(A)\)</span> and the
+area within the B circle (shaded red) which represents <span
+class="math inline">\(P(B)\)</span>. When we do this, we see that we are
+left with a section which is shaded both neon blue and red, resulting in
+a dark blue. This dark blue area represents <span
+class="math inline">\(P(A \&amp; B)\)</span>. The dark blue color, means
+that we “double counted” this area. To fix this, we just subtract out
+the <span class="math inline">\(A \&amp; B\)</span> area. That is, we
+subtract out <span class="math inline">\(P(A \&amp; B)\)</span>
+once.</p>
+<center>
+<p><img src="Pictures/Week%203%20A%20or%20B%202.png" width="350" /></p>
+</center>
+<p>So, we end up with the equation: <span class="math display">\[
+\begin{align}
+P(A \lor B) &amp;= \text{teal blue} + \text{red} - \text{dark blue}\\
+&amp;= P(A) + P(B) - P(A \&amp; B)
+\end{align}
+\]</span></p>
+</div>
+<div id="conditional-probability" class="section level1">
+<h1>Conditional Probability</h1>
+<p>When considering conditional probabilities, we are interested in the
+probability of some proposition <span class="math inline">\(A\)</span>
+being true given that we know that some other proposition <span
+class="math inline">\(B\)</span> is true. We use <span
+class="math inline">\(P(A | B)\)</span> to mean the probability of <span
+class="math inline">\(A\)</span> conditional on <span
+class="math inline">\(B\)</span> being true. It is defined to be:</p>
+<p><span class="math display">\[
+P(A|B) = \frac{P(A\&amp; B)}{P(B)}
+\]</span> This definition turns out to make sense for many reasons.
+However, for now, let us just treat this as stipulated.</p>
+<p>Conditional probability is tied up with the notion of
+<strong>independence</strong>. Two propositions, <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span>, are independent just in case <span
+class="math inline">\(P(A | B) = P(A)\)</span>. With this definition of
+independence, we can prove two equations for conjunctions of
+propositions.</p>
+<p><strong>(Formula for Independent Conjuncts)</strong> Given that <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> are independent then by the definition
+of conditional probabilities, we have: <span class="math display">\[
+P(A|B) = \frac{P(A\&amp; B)}{P(B)} \implies P(A) = \frac{P(A\&amp;
+B)}{P(B)}
+\]</span> Which then implies: <span class="math display">\[
+P(A \&amp; B) = P(A) \times P(B)
+\]</span> It is crucial to note here that this is not true for any <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span>. It is only true for propositions which
+are independent of one another.</p>
+<p><strong>(Formula for Conjunction)</strong> One general formula for
+the conjunction of any two propositions can be quickly obtained though.
+We note from the definition of conditional probabilities that: <span
+class="math display">\[
+P(A | B) = \frac{P(A \&amp; B)}{P(B)}
+\]</span> It then follows that: <span class="math display">\[
+P(A \&amp; B ) = P(A | B) \times P(B)
+\]</span></p>
+</div>
+<div id="example-two-four-sided-dice" class="section level1">
+<h1>Example: Two Four-Sided Dice</h1>
+<p>Suppose we have two fair four-sided die and we roll both of them. Let
+us first think about how we might represent all the possible outcomes of
+rolling both die. We could list out all the possibilities. Dice one may
+result in a 1 and dice two may result in a 1; dice one may result in a 2
+and dice two may result in a 1… This can go on for a while. Often, in
+mathematics, finding a representation of a given situation can be very
+useful for conceptualizing a problem; however, finding such a
+representation is also often the hard aspect of a problem. Thankfully,
+the following representation will work for us:</p>
+<center>
+<p><img src="Pictures/Week%203%20ExampleOne.png" width="350" /></p>
+</center>
+<p>Here, each square represents a possible outcome. For example, the
+green square represents the outcome where the first die results in 2 and
+the second die also results in 2. The lavender square represents the
+outcome where the first die results in 3 and the second die results in
+4.</p>
+<p>Now since the two dice are fair, that means that all the outcomes are
+equiprobable (having equal probability). So suppose we want to know what
+the probability of getting 2 on the first die and 3 on the second die
+is. We shall represent this as asking, what is the probability of <span
+class="math inline">\(P(\langle 2,3\rangle)\)</span>? Let us first
+highlight which outcome this is:</p>
+<center>
+<p><img src="Pictures/Week%203%20ExampleOne%202.png" width="350" /></p>
+</center>
+<p>Since each box represents the outcome of rolling both dice and each
+outcome is equiprobable, we can figure out what the probability of
+getting <span class="math inline">\(\langle 2,3\rangle\)</span> is by
+counting how many boxes the event of getting <span
+class="math inline">\(\langle 2,3\rangle\)</span> takes up and divide
+that by the total number of boxes. We see that the event <span
+class="math inline">\(\langle 2,3\rangle\)</span> only takes up 1 box,
+and there are 16 boxes in total. Therefore: <span
+class="math display">\[
+P(\langle 2,3\rangle) = \frac{1}{16}
+\]</span> Let us think about a more difficult question. What is the
+probability that the first die results in a 2? Well, let us look at all
+the outcomes in which the first die does result in 2.</p>
+<center>
+<p><img src="Pictures/Week%203%20ExampleOne%203.png" width="350" /></p>
+</center>
+<p>Here we see that the event “dice one results in 2” takes up 4 boxes.
+Again, since each outcome is equiprobable, we find the probability of
+dice one resulting in 2 by counting the number of boxes which it takes
+up and divide by the total number of boxes. In this case, we get: <span
+class="math display">\[
+P(\text{D1 = 2}) = \frac{4}{16} = \frac{1}{4}
+\]</span> Finally, let us consider the situation in which we are
+interested in the sum of the results of the two dice. For instance, we
+might want to know, what is the probability that the two dice results
+have a sum of 6. Again, let us find the outcomes in which the results
+have a sum of 6:</p>
+<center>
+<p><img src="Pictures/Week%203%20ExampleOne%204.png" width="350" /></p>
+</center>
+<p>We see that the event of the two dice having a sum of 6 takes up only
+3 boxes. Therefore, due to the same reasoning as before, we have: <span
+class="math display">\[
+P(\text{sum of dice }=6) = \frac{3}{16}
+\]</span></p>
+</div>
+<div id="example-a-small-deck-of-cards" class="section level1">
+<h1>Example: A Small Deck of Cards</h1>
+<p>Consider a “deck” of cards consisting of only eight cards:</p>
+<center>
+<p><img src="Pictures/Week%203%20ExampleTwo.png" width="350" /></p>
+</center>
+<p>Here, we have two “d” cards, two “h” cards, two “c” cards and two “s”
+cards. Let us suppose that when we draw from this deck that we have an
+equal chance of drawing any one of the cards. Hence, for example, since
+there are eight cards in total, the probability of drawing a “c” card
+is: <span class="math display">\[
+P(c) = \frac{2}{8} = \frac{1}{4}
+\]</span> Because there are 2 “c” cards and 8 cards in total.</p>
+<p>Now, what is the probability of drawing a “d” card on the first draw,
+putting that card back into the deck (i.e., with replacement), and then
+drawing an “s” card? We can represent the possible outcomes of two draws
+as follows:</p>
+<center>
+<p><img src="Pictures/Week%203%20ExampleTwo2%20.png" width="350" /></p>
+</center>
+<p>Here we have a “tree” representation of the possible outcomes. I
+haven’t drawn the middle “branches” for the “h” and “c” scenarios as it
+gets too crowded. Just know that there should be four branches extending
+from those letters as well. I have also made use of the fact that we do
+not really care, in this particular question, about which “d” or “c” or
+“h” or “s” card we pick. Hence the probability of picking a card of any
+type (“d”, “c”, “h”, or “s”) is <span
+class="math inline">\(1/4\)</span>. Starting from the left hand side, we
+see that for our first draw we have four possibilities. We have a <span
+class="math inline">\(1/4\)</span> chance of drawing a “d”, a <span
+class="math inline">\(1/4\)</span> chance of drawing an “h”, and so on.
+Suppose that on our first draw we get an “s”. Then we are here on the
+tree:</p>
+<center>
+<p><img src="Pictures/Week%203%20ExampleTwo%203%20.png"
+width="350" /></p>
+</center>
+<p>From there, there are four possibilities for our second draw each
+having probability of <span class="math inline">\(1/4\)</span>. Now, if
+we want to know the probability of getting a “c” putting it back and
+then getting an “h”, what we should do is look at the probability of
+ending up here:</p>
+<center>
+<p><img src="Pictures/Week%203%20ExampleTwo%204.png" width="350" /></p>
+</center>
+<p>To calculate this, we look at the probability of <span
+class="math inline">\(P(s_2 \&amp; d_1)\)</span>. Here I have
+subscripted the letters (subscripting means putting little numbers next
+to the letters) in order to indicate which draw it is. For instance,
+<span class="math inline">\(s_2\)</span> means getting an <span
+class="math inline">\(s\)</span> on the second draw. If we were
+interested in higher numbers of draws, we may write say <span
+class="math inline">\(c_5\)</span> for getting a <span
+class="math inline">\(c\)</span> on the fifth draw. In this case, <span
+class="math inline">\(s_2 \&amp; d_1\)</span> corresponds to the single
+branch:</p>
+<center>
+<p><img src="Pictures/Week%203%20ExampleTwo%205.png" width="350" /></p>
+</center>
+<p>Since each branch is equiprobable (everything has the same number
+<span class="math inline">\(1/4\)</span> written over it), we can simply
+count how many branches there are in total. If you count them all
+(including the ones I have not drawn for “h” and “c”), there are 16
+total branches. Therefore, <span class="math inline">\(P(s_2 \&amp; d_1)
+= 1/16\)</span>. Now what about the situation in which we first draw a
+“d” and then draw an “s” but we do not put the “d” back into the deck
+(i.e., without replacement). Here, we need to change our representation.
+Note that I only draw the top of the tree here with the “d” branch:</p>
+<center>
+<p><img src="Pictures/Week%203%20ExampleTwo%206.png" width="350" /></p>
+</center>
+<p>The crucial change is that having first drawn the “d” card, since we
+do not replace it in the deck, there are now only 7 cards in total. So
+the probabilities change. Now, we still want to know what <span
+class="math inline">\(P(s_2 \&amp; d_1)\)</span> is. Here, we need to
+use the equation: <span class="math display">\[
+P(s_2 \&amp; d_1) = P(s_2|d_1)P(d_1)
+\]</span> where <span class="math inline">\(P(s_2|d_1) = 2/7\)</span>
+(how do we know this? look at the tree! It tells us that given that
+<span class="math inline">\(d_1\)</span> has already occurred, the
+probability of getting to <span class="math inline">\(s_2\)</span> is
+<span class="math inline">\(2/7\)</span>. This is why the tree
+representation is so useful) and <span class="math inline">\(P(d_1) =
+1/4\)</span>. Therefore: <span class="math display">\[
+P(s_2 \&amp; d_1) = \frac{2}{7}\times \frac{1}{4} = \frac{2}{28} =
+\frac{1}{14}
+\]</span></p>
+</div>
+<div id="practice-problems" class="section level1">
+<h1>Practice Problems</h1>
+<ol style="list-style-type: decimal">
+<li>Consider one four sided die and one six sided die. We roll both of
+them at once. What is:</li>
+</ol>
+<ul>
+<li>The probability that the four sided die results in a 3 and the six
+sided die results in a 6?</li>
+<li>The probability that the sum of the two dice results is 4?</li>
+<li>The probability of the four sided die being 3 or being 2?</li>
+<li>The probability of the six sided die having an even result?</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Consider a deck with eight cards just like in the example above.
+However, in this example, there is 1 “d” card, 2 “h” cards, 3 “c” cards,
+and 2 “s” cards. Each card is drawn at random (i.e., individually, each
+card has an equal chance of being drawn). What is:</li>
+</ol>
+<ul>
+<li>The probability of an “h” card being drawn in one card draw?</li>
+<li>The probability of an “h” card first being drawn, put back in the
+deck (i.e., with replacement), and then drawing a “d” card?</li>
+<li>The probability of a “c” card being first being drawn, <em>not</em>
+put back in the deck (i.e., without replacement), and then drawing an
+“s” card?</li>
+</ul>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
