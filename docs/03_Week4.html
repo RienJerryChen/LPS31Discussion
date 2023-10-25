@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Week Four Discussion Notes</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">LPS/Phil 31 Discussion Notes</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Intro</a>
+</li>
+<li>
+  <a href="01_Week2.html">Week 2</a>
+</li>
+<li>
+  <a href="02_Week3.html">Week 3</a>
+</li>
+<li>
+  <a href="03_Week4.html">Week 4</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Week Four Discussion Notes</h1>
+
+</div>
+
+
+<p>Now that we have the basic probability theory tools we can start
+playing around with them. In lecture you will have been thinking about
+the Monty Hall Problem and other examples. We will start off this
+discussion by looking at another phenomenon, known as intransitive dice.
+We will then review Bayes Theorem very quickly, before moving onto
+another strange phenomenon, known as Simpson’s Paradox.</p>
+<div id="intransitive-dice-and-where-to-find-them"
+class="section level1">
+<h1>Intransitive Dice and Where to Find Them</h1>
+<p>The example I lay out here is from Bradley Efron (unfortunately, I do
+not know the citation, but a Google search should tell you all you need
+to know)</p>
+<p>Suppose that we have four (fair) dice with the following faces <span
+class="math display">\[
+\begin{align}
+  &amp; A = (0,0,4,4,4,4) &amp; B = (3,3,3,3,3,3)\\
+  &amp; C = (2,2,2,2,6,6) &amp; D = (1,1,1,5,5,5)
+\end{align}
+\]</span> That is, die A has two faces with nothing on them and four
+faces with four dots on them. Die D has three faces with one dot on them
+and three faces with five dots on them. Similarly for the other two.</p>
+<p>Let us consider two individuals, Willard and Rudolf, who pick
+different dice. That is, Willard picks die A then Rudolf cannot pick die
+A. We also suppose that they both pick their dice at the same time.</p>
+<p>Suppose Rudolf picks die A and Willard picks B. They both roll their
+dice at the same time. The winner is the individual with the higher
+result. What is the probability that the result of die A is greater than
+the result of die B? That is, what is the value of <span
+class="math inline">\(P(A &gt; B)\)</span>? Well, consider the following
+diagram which lays out the situation:</p>
+<center>
+<p><img src="Pictures/Week4Intransitive.png" width="350" /></p>
+</center>
+<p>The shaded green area is the area in which Die A beats Die B. We can
+see from the picture alone that Die A will beat Die B <span
+class="math inline">\(2/3\)</span> of the time. Therefore: <span
+class="math display">\[
+P(A &gt; B) = \frac{2}{3}
+\]</span> Now what if Rudolf picks die B and Willard picks die C? What
+is the probability that die <span class="math inline">\(B\)</span> beats
+die <span class="math inline">\(C\)</span>, <span
+class="math inline">\(P(B&gt; C)\)</span>? Well we have the following
+picture:</p>
+<center>
+<p><img src="Pictures/Week4Intransitive2.png" width="350" /></p>
+</center>
+<p>Here, the shaded red area indicates when Die B beats Die C. We see
+again that: <span class="math display">\[
+P(B &gt; C) = \frac{2}{3}
+\]</span> We can repeat this procedure to show that: <span
+class="math display">\[
+\begin{align}
+&amp;P(C &gt; B) = \frac{2}{3}\\
+&amp;P(D &gt; C) = \frac{2}{3}\\
+&amp;P(A &gt; D) = \frac{2}{3}
+\end{align}
+\]</span> Let us say that die <span class="math inline">\(X\)</span>
+<em>dominates</em> die <span class="math inline">\(Y\)</span> if <span
+class="math inline">\(X\)</span> beats <span
+class="math inline">\(Y\)</span> more than half the time (i.e., <span
+class="math inline">\(P(X &gt; Y) &gt; 1/2\)</span>). Then we have that
+<span class="math inline">\(A\)</span> dominates <span
+class="math inline">\(B\)</span>, which dominates <span
+class="math inline">\(C\)</span>, which itself dominates <span
+class="math inline">\(D\)</span>, which dominates <span
+class="math inline">\(A\)</span>!</p>
+<p>What does this mean? Suppose that Rudolf gets to always pick his die
+after he sees what Willard picks. This means that Rudolf can always pick
+a die which dominates whatever die Willard picks and hence Rudolf, on
+average, will win <span class="math inline">\(2/3\)</span> of the
+time.</p>
+</div>
+<div id="conditional-probabilities-are-probabilities"
+class="section level1">
+<h1>Conditional Probabilities are Probabilities!</h1>
+<p>It is important to recognize that all the rules that we have for
+unconditionalized probabilities still apply to conditional
+probabilities. What does this mean? Take for example, the rule for
+negated propositions</p>
+<p><span class="math display">\[
+P(\sim A) = 1 - P(A)
+\]</span></p>
+<p>The following is then true:</p>
+<p><span class="math display">\[
+P(\sim A|B) = 1 - P(A|B)
+\]</span></p>
+<p>We just have to make sure that we hold the proposition which we are
+conditioning upon (in this case <span class="math inline">\(B\)</span>)
+constant.</p>
+<p>Another example: consider the additivity rule (also called the
+special disjunction rule) for mutually exclusive propositions <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span></p>
+<p><span class="math display">\[
+P(A \lor B) = P(A) + P(B)
+\]</span> Now, suppose we conditionalize upon <span
+class="math inline">\(C\)</span>. Then we get:</p>
+<p><span class="math display">\[
+P(A\lor B|C) = P(A|C) + P(B|C)
+\]</span> It should be easy to see how this will apply to the other
+rules. Here are two other examples:</p>
+<ul>
+<li>General Disjunction Rule: <span class="math inline">\(P(A \lor B) =
+P(A) + P(B) - P(A\&amp;B)\)</span> and so the conditional version is
+<span class="math inline">\(P(A\lor B|C) = P(A|C) +P(B|C) -
+P(A\&amp;B|C)\)</span>.</li>
+<li>Special Conjunction Rule: Given independent propositions <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span>, we have <span
+class="math inline">\(P(A\&amp;B) = P(A) \times P(B)\)</span>. So the
+conditional version is <span class="math inline">\(P(A\&amp;B|C) =
+P(A|C) \times P(B|C)\)</span></li>
+<li>General Conjunction Rule: <span class="math inline">\(P(A\&amp; B) =
+P(A|B)P(B)\)</span> and so the conditional version is <span
+class="math inline">\(P(A \&amp; B | C) = P(A| B\&amp;
+C)P(B|C)\)</span>.</li>
+</ul>
+<p>The last one concerning the general conjunction rule is the most
+complicated one. I will not prove it, so we will just take it as true. I
+mention this now because we will soon use it.</p>
+</div>
+<div id="bayes-theorem" class="section level1">
+<h1>Bayes Theorem</h1>
+<p>The following equation is known as Bayes Theorem:</p>
+<p><span class="math display">\[
+P(H|E) = \frac{P(E|H)P(H)}{P(E)}
+\]</span></p>
+<p>It is fairly easy to prove this. Remember the general conjunction
+rule tells us that:</p>
+<p><span class="math display">\[
+P(H \&amp; E) = P(E|H)P(H)
+\]</span> And we have from the definition of conditional probabilities
+that:</p>
+<p><span class="math display">\[
+P(H|E) = \frac{P(H \&amp; E)}{P(E)}
+\]</span> So we just substitute in <span
+class="math inline">\(P(E|H)P(H)\)</span> for <span
+class="math inline">\(P(H\&amp;E)\)</span> in the numerator and we get
+Bayes Theorem!</p>
+</div>
+<div id="simpsons-paradox" class="section level1">
+<h1>Simpson’s Paradox</h1>
+<p>The following example is taken from Joseph B. Kadane’s <em>Principles
+of Uncertainty</em> (2nd Ed.). Suppose we have two routes to the summit
+of a mountain. One is the difficult route <span
+class="math inline">\(D\)</span> and the other one is the easy route
+<span class="math inline">\(\sim D\)</span>. There are also two kinds of
+climbers: the amateur climbers <span class="math inline">\(A\)</span>
+and the expert climbers <span class="math inline">\(\sim A\)</span>.
+Suppose that the probability of an individual reaching the summit
+<em>depends</em> upon whether or not they picked the difficult route or
+not and upon whether or not they are an amateur or not. The following
+probabilities are given: <span class="math display">\[
+\begin{align}
+    &amp;P(R|\sim D \&amp; \sim A) = 0.8 &amp;P(R| \sim D \&amp; A) =
+0.7\\
+    &amp;P(R|D \&amp; \sim A) = 0.4      &amp;P(R|D \&amp; A) = 0.3
+\end{align}
+\]</span> where <span class="math inline">\(R\)</span> is the
+proposition that the summit has been reached. We also suppose that
+expert climbers are more likely to take the difficult route: <span
+class="math display">\[
+\begin{align}
+&amp;P(D|\sim A) = 0.75 &amp;P(D|A) = 0.35
+\end{align}
+\]</span> We want to know which kind of climber reaches the summit more
+often. Intuition should suggest that the experts reach the summit more
+often. However, this is not borne out by the math.</p>
+<p>What we want to know is whether or not <span
+class="math inline">\(P(R|\sim A)\)</span> (the probability of reaching
+the summit given that one is an expert) is greater than <span
+class="math inline">\(P(R|A)\)</span> (the probability of reaching the
+summit given that one is an amateur). The first thing to note is that
+<span class="math inline">\(R = (R \&amp; \sim D) \lor (R\&amp;
+D)\)</span>. That is, reaching the summit is logically equivalent to
+reaching the summit and not taking the difficult route or reaching the
+summit and taking the difficult route. Hence, by the rule for logical
+equivalence:</p>
+<p><span class="math display">\[
+P(R|\sim A) = P(\:[(R \&amp; \sim D) \lor (R \&amp; D)]\:|\sim A)
+\]</span></p>
+<p>We then also note that <span class="math inline">\((R \&amp; \sim
+D)\)</span> and <span class="math inline">\((R \&amp; D)\)</span> are
+mutually exclusive. So by the special disjunction rule: <span
+class="math display">\[
+P(\:[(R \&amp; \sim D) \lor (R \&amp; D)]\:|\sim A) = P(R \&amp; \sim D|
+\sim A) + P(R \&amp; D | \sim A)
+\]</span> Now we can use the general conjunction rule (conditional
+version) to recognize that: <span class="math display">\[
+\begin{align}
+&amp;P(R \&amp; \sim D| \sim A) = P(R | \sim D \&amp; \sim A) P(\sim D |
+\sim A)\\
+&amp;P(R \&amp; D | \sim A) = P(R | D \&amp; \sim A) P(D|\sim A)
+\end{align}
+\]</span> Therefore: <span class="math display">\[
+P(R \&amp; \sim D| \sim A) + P(R \&amp; D | \sim A) = P(R | \sim D
+\&amp; \sim A) P(\sim D | \sim A) + P(R | D \&amp; \sim A) P(D|\sim A)
+\]</span> Conveniently, we now have numbers for all of these. So
+plugging in the numbers, we get: <span class="math display">\[
+P(R|\sim A) = (0.8)(0.25) + (0.4)(0.75) = 0.5
+\]</span></p>
+<p>Now we want to calculate <span class="math inline">\(P(R|
+A)\)</span>. The procedure is exactly as before and the answer that one
+should get is: <span class="math display">\[
+P(R | A) = 0.56
+\]</span> So in the end, the amateurs are more likely to reach the
+summit than the experts! The explanation in this particular case is
+intuitive: the experts are more likely to take the difficult route and
+that is why they are failing to reach the summit.</p>
+<p>Why is this so important? Consider the following. Suppose that we
+ourselves were at the summit and we know how many of the climbers
+departed from the base and we only counted whether or not amateurs or
+experts made it to the top. <em>We do not ask whether or not they took
+the difficult or easier route</em>. This means that, in the long run, we
+will see <span class="math inline">\(56\%\)</span> of the amateurs make
+it to the summit and only <span class="math inline">\(50\%\)</span> of
+the experts make it to the top. We would make the faulty conclusion that
+the amateurs were better climbers! Taking into account which routes they
+took explains this number.</p>
+<p>To put it in a more serious context, imagine that you are a drug
+researcher testing a drug. Suppose that you are comparing your drug’s
+capacity to cure some disease X to another drug which is already on the
+market. You have two labs with which you work. Those in lab A take your
+drug and those in lab B take the drug that is already on the market. You
+find that your drug cures disease X more often than the drug already on
+the market. Hooray! The pharmaceutical company you work for gives you a
+pat on the back and releases the drug into the world.</p>
+<p>One year later, it is shown that a segment of the population is
+getting worse from disease X even though they are taking your drug. It
+turns out that this segment of the population has a genetic mutation
+which makes your drug toxic to them. While they do not display terrible
+symptoms (that’s why during your clinical trial, nobody detected your
+drug as problematic), the drug causes their condition to worsen.
+Furthermore, it turns out that lab A was in a region where this genetic
+mutation was relatively rare; lab B was in a region where this genetic
+mutation is common, but remember, the participants at lab B did not take
+your drug!</p>
+<p>In this case, whether or not someone has the genetic mutation is
+analogous to whether or not someone took the difficult or the easy
+route. Whether or not someone gets cured of disease X or not is
+analogous to reaching the top of the summit. And whether or not in the
+clinical trial, a participant gets your drug or the drug that is already
+on the market is analogous to whether or not the climber was an expert
+or an amateur. Because you did not make the distinction between those
+without the genetic mutation and those with the genetic mutation, you
+failed to recognize that amongst a sub-population, your drug was
+actually doing more harm than good.</p>
+</div>
+<div id="practice-problems" class="section level1">
+<h1>Practice Problems</h1>
+<ol style="list-style-type: decimal">
+<li>Come up with three dice <span class="math inline">\(A\)</span>,
+<span class="math inline">\(B\)</span>, <span
+class="math inline">\(C\)</span> such that <span
+class="math inline">\(A\)</span> dominates <span
+class="math inline">\(B\)</span>, <span class="math inline">\(B\)</span>
+dominates <span class="math inline">\(C\)</span>, and <span
+class="math inline">\(C\)</span> dominates <span
+class="math inline">\(A\)</span>.</li>
+<li>Let <span class="math inline">\(A\)</span>, <span
+class="math inline">\(B\)</span>, and <span
+class="math inline">\(C\)</span> form a partition (see the definition in
+week 2 notes if you do not remember what a partition is). Suppose that:
+<span class="math display">\[
+\begin{align}
+  &amp;P(A) = \frac{1}{10}\\
+  &amp;P(B) = \frac{2}{10}\\
+  &amp;P(C) = \frac{3}{10}\\
+  &amp;P(D) = \frac{4}{10}
+\end{align}
+\]</span> And suppose <span class="math inline">\(Z\)</span> is an event
+such that: <span class="math display">\[
+\begin{align}
+&amp;P(A\&amp;Z) = \frac{1}{20}\\
+&amp;P(B\&amp;Z) = \frac{3}{20}\\
+&amp;P(C\&amp;Z) = \frac{5}{20}\\
+&amp;P(D\&amp;Z) = \frac{7}{20}
+\end{align}
+\]</span> What is <span class="math inline">\(P(A|Z)\)</span>, <span
+class="math inline">\(P(B|Z)\)</span>, <span
+class="math inline">\(P(C|Z)\)</span> and <span
+class="math inline">\(P(D|Z)\)</span></li>
+<li>In the section on Simpson’s Paradox, the solution to <span
+class="math inline">\(P(R|A)\)</span> is just given. Walk through the
+steps of how you would find the numerical value of <span
+class="math inline">\(P(R|A)\)</span> and check that you get the same
+answer as the one stated in these notes.</li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

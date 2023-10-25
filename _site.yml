@@ -8,4 +8,6 @@ navbar:
       href: 01_Week2.html
     - text: "Week 3"
       href: 02_Week3.html
+    - text: "Week 4"
+      href: 03_Week4.html
 output_dir: "docs"

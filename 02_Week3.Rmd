@@ -203,7 +203,8 @@ To calculate this, we look at the probability of $P(s_2 \& d_1)$. Here I have su
 
 </center>
 
-Since each branch is equiprobable (everything has the same number $1/4$ written over it), we can simply count how many branches there are in total. If you count them all (including the ones I have not drawn for "h" and "c"), there are 16 total branches. Therefore, $P(s_2 \& d_1) = 1/16$. 
+Since each branch is equiprobable (everything has the same number $1/4$ written over it), we can simply count how many branches there are in total. If you count them all (including the ones I have not drawn for "h" and "c"), there are 16 total branches. Therefore, $P(s_2 \& d_1) = 1/16$. [Note that if you use the equation for conjunctions (that is, $P(A\&B) = P(A|B)P(B)$, you will get the same answer; here I use intuition and the power of a good representation to just answer the question directly)]. 
+
 Now what about the situation in which we first draw a "d" and then draw an "s" but we do not put the "d" back into the deck (i.e., without replacement). Here, we need to change our representation. Note that I only draw the top of the tree here with the "d" branch:
 
 <center>
