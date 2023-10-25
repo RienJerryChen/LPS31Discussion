@@ -123,7 +123,7 @@ To get the second version of Bayes Theorem, we just need to recognize that the p
 $$
 P(E) = P((E\& H) \lor (E \& \sim H)) = P(E \& H) + P(E \& \sim H) = P(E|H)P(H) + P(E|\sim H)P(\sim H)
 $$
-And so substituting what we have above for $P(E)$, we get:
+And so substituting what we have above for $P(E)$, we find that:
 
 $$
 P(H|E) = \frac{P(E|H)P(H)}{P(E|H)P(H) + P(E|\sim H)P(\sim H)}
