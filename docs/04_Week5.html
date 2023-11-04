@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Week Five Discussion Notes</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">LPS/Phil 31 Discussion Notes</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Intro</a>
+</li>
+<li>
+  <a href="01_Week2.html">Week 2</a>
+</li>
+<li>
+  <a href="02_Week3.html">Week 3</a>
+</li>
+<li>
+  <a href="03_Week4.html">Week 4</a>
+</li>
+<li>
+  <a href="04_Week5.html">Week 5</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Week Five Discussion Notes</h1>
+
+</div>
+
+
+<div id="theorem-of-total-probability" class="section level1">
+<h1>Theorem of Total Probability</h1>
+<p>Given a partition <span
+class="math inline">\(\{B_1,B_2,\ldots,B_n\}\)</span> of <span
+class="math inline">\(n\)</span> propositions, the following equation is
+true:</p>
+<p><span class="math display">\[
+P(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2) + \cdots + P(A|B_n)P(B_n)
+\]</span> or equivalently, using sigma notation:</p>
+<p><span class="math display">\[
+P(A) = \sum_{i = 1}^{n} P(A|B_i) P(B_i)
+\]</span> The <span class="math inline">\(\Sigma\)</span> symbol tells
+us to sum from <span class="math inline">\(i\)</span> to <span
+class="math inline">\(n\)</span>. In this case, <span
+class="math inline">\(i = 1\)</span> so it tell us to start with
+replacing the <span class="math inline">\(i\)</span>s with <span
+class="math inline">\(1\)</span>s, then replacing the <span
+class="math inline">\(i\)</span>s with <span
+class="math inline">\(2\)</span>s, then <span
+class="math inline">\(3\)</span>s, until we get to <span
+class="math inline">\(n\)</span>. We then sum up all those terms:</p>
+<p><span class="math display">\[
+P(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2) + \cdots + P(A|B_n)P(B_n)
+\]</span></p>
+<p>One very useful case of the Theorem of Total Probability is when the
+partition that we are considering is of the form <span
+class="math inline">\(\{B, \sim B\}\)</span>. (Make sure you understand
+why this is a partition). In this case, we get:</p>
+<p><span class="math display">\[
+P(A) = P(A|B)P(B) + P(A|\sim B)P(\sim B)
+\]</span> # Bayes Theorem (General)</p>
+<p>Recall Bayes Theorem:</p>
+<p><span class="math display">\[
+P(H|E) = \frac{P(E|H)P(H)}{P(E)}
+\]</span> We can use the theorem of total probability on <span
+class="math inline">\(P(E)\)</span> to get:</p>
+<p><span class="math display">\[
+P(H|E) = \frac{P(E|H)P(H)}{\sum_{i = 1}^{n} P(E|H_i)P(H_i)}
+\]</span> And this is the most general version of Bayes Theorem.</p>
+</div>
+<div id="an-example-using-total-probability" class="section level1">
+<h1>An Example Using Total Probability</h1>
+<p>Here we are only considering honey bees and bumblebees. Suppose there
+are <em>only</em> three kinds of personalities which bees may possess:
+they may be funny bees, jazzy bees or lame bees. Every bee has <em>at
+most one</em> of these personalities (e.g., a funny bee cannot be a
+jazzy bee nor can it be a lame bee). <span
+class="math inline">\(10\%\)</span> of all bees are funny, <span
+class="math inline">\(70\%\)</span> of all bees are jazzy and the
+remaining <span class="math inline">\(20\%\)</span> are lame. We also
+know that <span class="math inline">\(20\%\)</span> of the funny bees
+are bumblebees; <span class="math inline">\(60 \%\)</span> of the jazzy
+bees are bumble bees; and <span class="math inline">\(30\%\)</span> of
+the lame bees are bumblebees. What is the probability that a randomly
+chosen bee is a bumble bee?</p>
+<p>Let us use:</p>
+<ul>
+<li><span class="math inline">\(B\)</span> = Chosen bee is a bumble
+bee</li>
+<li><span class="math inline">\(F\)</span> = Chosen bee is a funny
+bee</li>
+<li><span class="math inline">\(J\)</span> = Chosen bee is a jazzy
+bee</li>
+<li><span class="math inline">\(L\)</span> = Chosen bee is a lame
+bee</li>
+</ul>
+<p>Then note that $F, J $ and <span class="math inline">\(L\)</span>
+form a partition on the types of bees. This is hinted at when I write
+there are <strong><em>only</em></strong> three personalities which bees
+may possess; there are no other personalities which a bee can be. Hence,
+by the Theorem of Total Probability:</p>
+<p><span class="math display">\[
+P(B) = P(B|F)P(F) + P(B|J)P(J) + P(B|L)P(L)
+\]</span> We are told that of all the bees, only <span
+class="math inline">\(10\%\)</span> are funny and that of the funny
+bees, <span class="math inline">\(20\%\)</span> are bumblebees.
+Therefore: <span class="math display">\[
+P(B|F)P(F) = (0.1)(0.2)
+\]</span> We are also told that of all the bees, only <span
+class="math inline">\(70\%\)</span> are jazzy and that of the jazzy
+bees, <span class="math inline">\(60\%\)</span> are bumblebees.
+Therefore: <span class="math display">\[
+P(B|J)P(J) = (0.6)(0.7)
+\]</span> Finally, we are told that the remaining <span
+class="math inline">\(20\%\)</span> of bees are lame and that of the
+lame ones, <span class="math inline">\(30\%\)</span> are bumblebees.
+Therefore:</p>
+<p><span class="math display">\[
+P(B|L)P(L) = (0.3)(0.2)
+\]</span> I leave it to you to fill in the numbers for the equation for
+<span class="math inline">\(P(B)\)</span> and solve it.</p>
+</div>
+<div id="boxes-and-colored-balls" class="section level1">
+<h1>Boxes and Colored Balls</h1>
+<p>There are three boxes, box A, box B and box C, which are
+indistinguishable from our point of view. Hence, the probability that we
+pick any one particular box is equivalent to the probability that we
+pick any other particular box (i.e., <span class="math inline">\(P(A) =
+P(B) = P(C) = 1/3\)</span>). Box A has 2 red balls and 1 green ball. Box
+B has 1 red ball and 4 green balls. Box C has 2 red balls.</p>
+<p>Here is one way to visualize this scenario:</p>
+<center>
+<p><img src="Pictures/Week5Ex1.png" width="350" /></p>
+</center>
+<p>Make sure that you understand how this diagram represents the
+scenario described.</p>
+<ol style="list-style-type: lower-roman">
+<li>Suppose that we pick a box at random and we draw a green ball. What
+is the probability that we picked box <span
+class="math inline">\(A\)</span>?</li>
+</ol>
+<p>What is the probability that this question is asking for? It is:</p>
+<p><span class="math display">\[
+P(A|G)
+\]</span> That is, we want to know the probability that we have box
+<span class="math inline">\(A\)</span> given that we picked a green
+ball. There are three versions of Bayes Theorem which we can use. Let’s
+try the first one:</p>
+<p><span class="math display">\[
+P(A|G) = \frac{P(G|A)P(A)}{P(G)}
+\]</span></p>
+<p>Well, we can figure out the value of <span
+class="math inline">\(P(G|A)\)</span> and <span
+class="math inline">\(P(A)\)</span>. We know that the probability of
+getting box <span class="math inline">\(A\)</span> just is <span
+class="math inline">\(P(A) = 1/3\)</span>. We know that since there is
+one green ball in box <span class="math inline">\(A\)</span> and three
+balls in box <span class="math inline">\(A\)</span> in total, that <span
+class="math inline">\(P(G|A) = 1/3\)</span>. But what is <span
+class="math inline">\(P(G)\)</span>, the probability that we get a green
+ball in general? We do not know, so it turns out we will have to use the
+general version of Bayes Theorem. This is going to require us to use the
+Theorem of Total Probability which itself requires us to identify a
+partition class. The appropriate partition class to be using here is
+<span class="math inline">\(\{A,B,C\}\)</span> (make sure you understand
+why this is a partition). Hence, Bayes Theorem (general)</p>
+<p><span class="math display">\[
+P(A|G) = \frac{P(G|A)P(A)}{P(G|A)P(A) + P(G|B)P(B) + P(G|C)P(C)}
+\]</span> We know that there are <span class="math inline">\(0\)</span>
+green balls in box <span class="math inline">\(C\)</span>. Hence, <span
+class="math inline">\(P(G|C) = 0\)</span>. Therefore, we can ignore the
+<span class="math inline">\(P(G|C)P(C)\)</span> term. We know that there
+are <span class="math inline">\(4\)</span> green balls out of the <span
+class="math inline">\(5\)</span> balls in box <span
+class="math inline">\(B\)</span>. Therefore, <span
+class="math inline">\(P(G|B) = 4/5\)</span>. We also have that <span
+class="math inline">\(P(B) = 1/3\)</span>. Therefore: <span
+class="math display">\[
+P(A|G) = \frac{\frac{1}{3} \times \frac{1}{3}}{\left(\frac{1}{3} \times
+\frac{1}{3}\right) + \left(\frac{4}{5} \times \frac{1}{3}\right)}
+\]</span></p>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Suppose that we draw a green ball and do not return it to the box we
+picked it from. We draw from that very same box a red ball. Now, what is
+the probability that we picked from box <span
+class="math inline">\(A\)</span>?</li>
+</ol>
+<p>Here we want to know: <span class="math display">\[
+P(A| G_1 \&amp; R_2)
+\]</span> I use the subscripts here to mark whether or not it was the
+first ball picked or the second ball picked. That is, <span
+class="math inline">\(G_1\)</span> is the proposition that the first
+ball picked was green and <span class="math inline">\(R_2\)</span> is
+the propositions that the second ball picked was red.</p>
+<p>We use Bayes Theorem again: <span class="math display">\[
+P(A|G_1 \&amp; R_2) = \frac{P(G_1 \&amp; R_2 |A) P(A)}{P(G_1 \&amp;
+R_2)}
+\]</span> We can first apply the conditional version of the general
+conjunction rule (we cannot use the special rule since <span
+class="math inline">\(G_1\)</span> and <span
+class="math inline">\(R_2\)</span> are not independent of each other) to
+get [look at last week’s notes for a remined on the conditional version
+of the general conjunction rule]: <span class="math display">\[
+P(A|G_1 \&amp; R_2) = \frac{P(R_2|G_1 \&amp; A)P(G_1|A)P(A)}{P(G_1
+\&amp; R_2)}
+\]</span> Just as in (i), we do not actually know the value of <span
+class="math inline">\(P(G_1 \&amp; R_2)\)</span>. What we needed instead
+was the general version of Bayes Theorem. We use the same partition as
+in (i). The numerator remains the same and so we can write it as: <span
+class="math display">\[
+P(A|G_1 \&amp; R_2) = \frac{P(R_2|G_1 \&amp; A)P(G_1|A)P(A)}{P(R_2| G_1
+\&amp; A)P(G_1|A)P(A) + P(R_2| G_1 \&amp; B)P(G_1\&amp; B)P(B) +
+P(R_2|G_1 \&amp; C)P(G_1|C)P(C)}
+\]</span> Again, since there are no green balls in box <span
+class="math inline">\(C\)</span>, we have that <span
+class="math inline">\(P(G_1|C) = 0\)</span> hence we can rewrite the
+preceding equation as: <span class="math display">\[
+P(A|G_1 \&amp; R_2) = \frac{P(R_2|G_1 \&amp; A)P(G_1|A)P(A)}{P(R_2| G_1
+\&amp; A)P(G_1|A)P(A) + P(R_2| G_1 \&amp; B)P(G_1\&amp; B)P(B)}
+\]</span> I will leave it to you to figure out how I got the following
+numbers: <span class="math display">\[
+P(A|G_1 \&amp; R_2) = \frac{1\times \frac{1}{3}\times
+\frac{1}{3}}{\left( 1\times \frac{1}{3} \times \frac{1}{3}\right) +
+\left( \frac{1}{4} \times \frac{4}{5} \times \frac{1}{3} \right)}
+\]</span></p>
+</div>
+<div id="medical-testing" class="section level1">
+<h1>Medical Testing</h1>
+<p>This problem is from Joseph B. Kadane’s <em>Principles of
+Uncertainty</em>: Phenylketonuria (PKU) is a genetic disorder that
+affects infants and can lead to mental disability unless treated. It
+affects about 1 in 10 thousand newborn infants. Suppose that the test
+has a sensitivity of <span class="math inline">\(99.99\%\)</span>
+(sensitivity is the probability that an individual tests positive given
+that they have PKU) and a specificity of <span
+class="math inline">\(99\%\)</span> (specificity is the probability that
+an individual tests negative given that they do not have PKU).</p>
+<ol style="list-style-type: lower-roman">
+<li>What is the probability that a baby has PKU if the test is
+positive?</li>
+</ol>
+<p>With a question like this, it is always good to first write down
+which probabilities you do have. We are first told that PKU affects 1 in
+10 thousand infants. Hence: <span class="math display">\[
+P(PKU) = \frac{1}{10000}
+\]</span> We are then told the sensitivity: <span
+class="math display">\[
+P(Positive|PKU) = \frac{9999}{10000}
+\]</span> and the specificity <span class="math display">\[
+P(\sim Positive | \sim PKU) = \frac{99}{100}
+\]</span> And what we want to know is <span
+class="math inline">\(P(PKU|Positive)\)</span>. Well, we know what <span
+class="math inline">\(P(Positive|PKU)\)</span> is and what <span
+class="math inline">\(P(PKU)\)</span> is. These are terms we will need
+to know to solve Bayes Theorem, and so this is a hint that Bayes Theorem
+is the appropriate tool to use (as opposed to say, using the definition
+of the conditional probability). Hence: <span class="math display">\[
+P(PKU|Positive) = \frac{P(Positive|PKU)P(PKU)}{P(Positive)}
+\]</span> Unfortunately, we do not know <span
+class="math inline">\(P(Positive)\)</span>. So let’s try the other
+version of Bayes Theorem: <span class="math display">\[
+P(PKU|Positive) = \frac{P(Positive|PKU)P(PKU)}{P(Positive|PKU)P(PKU) +
+P(Positive|\sim PKU)P(\sim PKU)}
+\]</span> The new terms we need to figure out are <span
+class="math inline">\(P(Positive|\sim PKU)\)</span> and <span
+class="math inline">\(P(\sim PKU)\)</span>. Well we know what <span
+class="math inline">\(P(\sim Positive |\sim PKU)\)</span> is. So we can
+use the conditional version of the negation rule to get: <span
+class="math display">\[
+P(Positive |\sim PKU) = 1 - P(\sim Positive |\sim PKU) = 1 -
+\frac{99}{100} = \frac{1}{100}
+\]</span> and we can just apply the negation rule to get: <span
+class="math display">\[
+P(\sim PKU) = 1 - P(PKU) = 1 - \frac{1}{10000} = \frac{9999}{10000}
+\]</span> Therefore, putting all the numbers together, we get: <span
+class="math display">\[
+P(PKU|Positive) = \frac{\frac{9999}{10000} \times
+\frac{1}{10000}}{\left(\frac{9999}{10000} \times \frac{1}{10000}\right)
++ \left( \frac{1}{100} \times \frac{9999}{10000}\right)}
+\]</span> (ii) What is the probability that a baby does not have PKU if
+the test is negative?</p>
+<p>Here we want to know what <span class="math inline">\(P(\sim PKU|\sim
+Positive)\)</span>. We follow exactly the same procedure as for (i) to
+get:</p>
+<p><span class="math display">\[
+P(\sim PKU|\sim Positive) = \frac{P(\sim Positive|\sim PKU)P(\sim
+PKU)}{P(\sim Positive|\sim PKU)P(\sim PKU) + P(\sim Positive|PKU)P(PKU)}
+\]</span> I leave it to you to fill in the numbers.</p>
+</div>
+<div id="coins-and-bayes-theorem" class="section level1">
+<h1>Coins and Bayes Theorem</h1>
+<p>Consider three hypotheses which we might hold about a coin:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(F\)</span> = the coin is fair</li>
+<li><span class="math inline">\(B\)</span> = the coin is biased to come
+up heads <span class="math inline">\(80\%\)</span> of the time.</li>
+<li><span class="math inline">\(C\)</span> = neither <span
+class="math inline">\(F\)</span> nor <span
+class="math inline">\(B\)</span> are correct.</li>
+</ol>
+<p>Let <span class="math inline">\(E\)</span> be the proposition that
+the coin has come up 5 times in 5 tosses.</p>
+<ol style="list-style-type: lower-roman">
+<li>Suppose, initially we believe that the coin is twice as likely to be
+fair as biased. What is the ratio of posterior probability <span
+class="math inline">\(P(F|E)/P(B|E)\)</span>?</li>
+</ol>
+<p>What does it mean to believe that the coin is twice as likely to be
+fair as biased? Well it means the following:</p>
+<p><span class="math display">\[
+P(F) = 2 \times P(B)
+\]</span> What we want to calculate is the following ratio:</p>
+<p><span class="math display">\[
+\frac{P(F|E)}{P(B|E)}
+\]</span> Well, we can use Bayes Theorem to find the numerator and the
+denominator:</p>
+<p><span class="math display">\[
+P(F|E) = \frac{P(E|F)P(F)}{P(E|F)P(F) + P(E|B)P(B) + P(E|C)P(C)}
+\]</span> <span class="math display">\[
+P(B|E) = \frac{P(E|B)P(B)}{P(E|B)P(E) + P(E|F)P(F) + P(E|C)P(C)}
+\]</span> we note that the denominators of both of these two fractions
+are the same. Hence, when we divide these two fractions with each other,
+their denominators get cancelled out leaving us with:</p>
+<p><span class="math display">\[
+\frac{P(F|E)}{P(B|E)} = \frac{P(E|F)P(F)}{P(E|B)P(B)}
+\]</span> Now recall our assumption that <span
+class="math inline">\(P(F) = 2P(B)\)</span>. Substituting that fact in,
+we get:</p>
+<p>$$ = = </p>
+<p>$$ This turns out to be a problem where all the prior probabilities
+(i.e., <span class="math inline">\(P(F)\)</span>, <span
+class="math inline">\(P(B)\)</span> and <span
+class="math inline">\(P(C)\)</span>) get cancelled out. That is, we do
+not need to have priors to solve this problem. In any case, now we
+should calculate <span class="math inline">\(P(E|F)\)</span> and <span
+class="math inline">\(P(E|B)\)</span>. Well, <span
+class="math inline">\(P(E|B)\)</span> is the probability that we get
+<span class="math inline">\(5\)</span> heads in <span
+class="math inline">\(5\)</span> coin tosses. Each toss is independent
+from every other toss (unless stated explicitly you can use your
+intuition for these kinds of things). This means that we can use the
+special conjunction rule. Hence:</p>
+<p><span class="math display">\[
+P(E|F) = P(Heads) \times P(Heads) \times P(Heads) \times P(Heads) \times
+P(Heads) = \left(\frac{1}{2}\right)^5
+\]</span> We use the same reasoning to get <span
+class="math inline">\(P(E|B)\)</span> except here, we have probability
+<span class="math inline">\(4/5\)</span> (i.e., <span
+class="math inline">\(80\%\)</span>) of getting heads. Hence:</p>
+<p><span class="math display">\[
+P(E|B) = \left(\frac{4}{5}\right)^5
+\]</span> Therefore:</p>
+<p><span class="math display">\[
+\frac{P(F|E)}{P(B|E)} = \frac{2P(E|F)}{P(E|B)} = \frac{2 \times
+\left(\frac{1}{2}\right)^5}{\left(\frac{4}{5}\right)^5}
+\]</span></p>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Suppose <span class="math inline">\(P(E) = 0.1\)</span>, while <span
+class="math inline">\(P(F) = 0.5\)</span> and <span
+class="math inline">\(P(B) = 0.2\)</span>. What is the posterior
+probability of <span class="math inline">\(C\)</span> given <span
+class="math inline">\(E\)</span>?</li>
+</ol>
+<p>We now want to find <span class="math inline">\(P(C|E)\)</span>. Use
+Bayes Theorem:</p>
+<p><span class="math display">\[
+P(C|E) = \frac{P(E|C)P(C)}{P(E|C)P(C) + P(E|B)P(B) + P(E|F)P(F)}
+\]</span> Here we have to deal with the nasty conditional probability
+<span class="math inline">\(P(E|C)\)</span>. This is asking for the
+probability that we get <span class="math inline">\(5\)</span> heads in
+<span class="math inline">\(5\)</span> tosses given that the coin is not
+fair nor is it biased to be heads <span
+class="math inline">\(80\%\)</span> of the time. When is the coin not
+fair nor biased to heads <span class="math inline">\(80\%\)</span> of
+the time? It can be when the coin is biased to heads <span
+class="math inline">\(79\%\)</span> of the time, when the coin is biased
+to heads <span class="math inline">\(79.1\%\)</span> of the tie, when
+coin is biased to tails <span class="math inline">\(60\%\)</span> of the
+time and so on. There are in fact, infinitely many ways the coin could
+be biased in different ways and not be fair and not be biased towards
+heads <span class="math inline">\(80\%\)</span> of the time. So what do
+we do?</p>
+<p>Here’s one way to solve it. We know from the Theorem of Total
+Probability that (think about why <span
+class="math inline">\(\{B,F,C\}\)</span> for a partition):</p>
+<p><span class="math display">\[
+P(E) = P(E|B)P(B) + P(E|F)P(F) + P(E|C)P(C)
+\]</span> Let us isolate the <span class="math inline">\(P(E|C)\)</span>
+term:</p>
+<p><span class="math display">\[
+P(E|C) = \frac{P(E|B)P(B) + P(E|F)P(F)}{P(C)}
+\]</span> Well now we need <span class="math inline">\(P(C)\)</span>.
+Thankfully, getting this value is not hard. Recognize that <span
+class="math inline">\(F, B\)</span> and <span
+class="math inline">\(C\)</span> form a partition. If <span
+class="math inline">\(F\)</span> is true then <span
+class="math inline">\(B\)</span> and <span
+class="math inline">\(C\)</span> cannot be true. If <span
+class="math inline">\(B\)</span> is true then <span
+class="math inline">\(F\)</span> and <span
+class="math inline">\(C\)</span> cannot be true. If <span
+class="math inline">\(C\)</span> is true then <span
+class="math inline">\(F\)</span> and <span
+class="math inline">\(B\)</span> cannot be true. And the three
+propositions are exhaustive. Hence: <span class="math display">\[
+P(C) = 1 - [P(F) + P(B)] = 1 - 0.7 = 0.3
+\]</span> So we can solve for <span
+class="math inline">\(P(E|C)\)</span>:</p>
+<p><span class="math display">\[
+P(E|C) = \frac{\left(\frac{4}{5}\right)^5 \times \frac{1}{5} +
+\left(\frac{1}{2}\right)^5 \times \frac{1}{2}}{\frac{3}{10}}
+\]</span> You can calculate whatever value that is and then go back to
+the equation for <span class="math inline">\(P(C|E)\)</span> and solve
+that equation now.</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

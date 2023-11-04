@@ -330,6 +330,9 @@ div.tocify {
 <li>
   <a href="03_Week4.html">Week 4</a>
 </li>
+<li>
+  <a href="04_Week5.html">Week 5</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -486,9 +489,20 @@ P(H|E) = \frac{P(H \&amp; E)}{P(E)}
 class="math inline">\(P(E|H)P(H)\)</span> for <span
 class="math inline">\(P(H\&amp;E)\)</span> in the numerator and we get
 Bayes Theorem!</p>
-</div>
-<div id="simpsons-paradox" class="section level1">
-<h1>Simpson’s Paradox</h1>
+<p>To get the second version of Bayes Theorem, we just need to recognize
+that the proposition <span class="math inline">\(E\)</span> is logically
+equivalent to <span class="math inline">\((E \&amp; H) \lor (E \&amp;
+\sim H)\)</span> where <span class="math inline">\((E\&amp; H)\)</span>
+is mutually exclusive from <span class="math inline">\((E \&amp; \sim
+H)\)</span>. Therefore:</p>
+<p><span class="math display">\[
+P(E) = P((E\&amp; H) \lor (E \&amp; \sim H)) = P(E \&amp; H) + P(E
+\&amp; \sim H) = P(E|H)P(H) + P(E|\sim H)P(\sim H)
+\]</span> And so substituting what we have above for <span
+class="math inline">\(P(E)\)</span>, we find that:</p>
+<p><span class="math display">\[
+P(H|E) = \frac{P(E|H)P(H)}{P(E|H)P(H) + P(E|\sim H)P(\sim H)}
+\]</span> # Simpson’s Paradox</p>
 <p>The following example is taken from Joseph B. Kadane’s <em>Principles
 of Uncertainty</em> (2nd Ed.). Suppose we have two routes to the summit
 of a mountain. One is the difficult route <span
