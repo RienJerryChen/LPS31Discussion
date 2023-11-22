@@ -175,7 +175,7 @@ P(A) = \frac{x}{x + y}
 $$
 Generally, when a bookie (or anyone really) bets you on odds $x : y$, what they are communicating is that they think it is a fair bet, *for them*, to put up $\$ y$ for every $\$ x$ that you put up in the bet. The bookie is betting that $A$ does not happen, you are betting that $A$ happens. 
 
-For example, if someone posts odds of $1 : 5$ for the event of the horse Bob coming first, this means that they are willing to bet against you $\$ 5$ for every $\$ 1$ you put up. You win if Bob comes first, they win if Bob does not come first. Let us see how this is a fair bet (in your opponent better's eyes). Firstly, the fact that they put to you $1 : 5$ odds means that they believe that the probability of Bob winning is:
+For example, if someone posts odds of $1 : 5$ for the event of the horse Bob coming first, this means that they are willing to bet against you $\$ 5$ for every $\$ 1$ you put up. You win if Bob comes first and they win if Bob does not come first. Let us see how this is a fair bet (in your opponent better's eyes). Firstly, the fact that they put to you $1 : 5$ odds means that they believe that the probability of Bob winning is:
 $$
 P(\text{Bob Wins}) = \frac{1}{1 + 5} = \frac{1}{6}
 $$
