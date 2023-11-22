@@ -20,7 +20,7 @@ Decision theory is the theory of rational decision making. Problems in decision 
 
 </center>
 
-This is a visualization of the decision problem. It is not the decision problem itself! The visualization contains all the information we would need in order to understand a decision problem.
+This is a visualization of a decision problem. It is not the decision problem itself! The visualization contains all the information we would need in order to understand a decision problem.
 
 In any case, there are a couple of important components of a decision problem:
 - States: These are ways that the world could be. They are not actions, nor are they outcomes of agents taking actions (though we could extend our formalism so that we could consider the states to be other agents and their actions). Often, when characterizing the states we also specify the probabilities of such states.
