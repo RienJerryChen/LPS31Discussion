@@ -94,6 +94,71 @@ EU(A) = \sum_{i=1}^{n} P(S_i) U(A\&S_i)
 $$
 which says to sum from $i = 1$ to $n$, the product of $P(S_i)$ and $U(A \& S_i)$. In the example we just considered, the utility is just the monetary value. However, again, utility is generally not to be identified with money.
 
+# Tipping Points
+
+Suppose that we are given the following problem: we want to decide whether or not to bring an umbrella. If we bring an umbrella and it rains, then we are happy. If we bring an umbrella and it does not rain, we are slightly unhappy since we have to lug an umbrella around. If we do not bring an umbrella and it rains, then we are very unhappy. If we do not bring an umbrella and it does not rain, then we are happy. 
+
+<center>
+
+![](Pictures/Week8Picture3.png){width=350px}
+
+</center>
+
+(The specific numbers given here are made up). Now suppose that we want to know what is the tipping point at which the expected utility of bringing an umbrella has equal expected utility to not bringing an umbrella. That is, when is the following equation true?
+
+$$
+EU(\text{Bring Umbrella}) = EU(\text{Do not bring Umbrella})
+$$
+Well, let us use the letter $R$ for the proposition "it rains" and the letter $B$ for "bring umbrella". Then:
+$$
+\begin{align}
+&EU(B) = P(R) U(B\& R) + P(\sim R) U(B\& \sim R)\\
+&EU(\sim B) = P(R) U(B\& R) + P(\sim R)U(B \& \sim R)
+\end{align}
+$$
+we know what the utilities are (look at the decision matrix!):
+
+$$
+\begin{align}
+&U(B \& R) = 10\\
+&U(B \& \sim R) = 5\\
+&U(\sim B \& R) = 0\\
+&U(\sim B \& \sim R) = 10
+\end{align}
+$$
+So we end up with:
+$$
+\begin{align}
+&EU(B) = (P(R)\cdot 10) + (P(\sim R)\cdot 5)\\
+&EU(\sim B) = (P(R) \cdot0) + (P(\sim R) \cdot10)
+\end{align}
+$$
+Now remember, we want to know when $EU(B) = EU(\sim B)$. So set them equal to one another:
+$$
+(P(R)\cdot 10) + (P(\sim R)\cdot 5) = (P(R) \cdot0) + (P(\sim R) \cdot10)
+$$
+which implies that:
+$$
+\begin{align}
+(P(R) \cdot 10) + (P(\sim R)\cdot 5) &= P(\sim R) \cdot 10\\
+(P(R) \cdot 10) + (P(\sim R)\cdot 5) - (P(\sim R) \cdot 10) &= 0 
+\end{align}
+$$
+Now remember by the negation rule, we have that $P(\sim R) = 1 - P(R)$. So we get:
+$$
+(P(R) \cdot 10) + ((1 - P(R))\cdot 5) - ((1 - P(R)) \cdot 10) = 0
+$$
+simplifying, we get:
+$$
+\begin{align}
+10P(R) + 5 - 5P(R) - 10 + 10P(R) &= 0\\
+15P(R) - 5 &=0\\
+15P(R) &= 5\\
+P(R) &= \frac{5}{15}
+\end{align}
+$$
+So when the probability of raining is $5/15$ or $1/3$, the expected utility of bringing an umbrellla is equal to the expected utility of not bringing an umbrella. 
+
 # Fair Bets and Odds
 
 We have a fair bet when the expected utility of betting is equal to the expected utility of not betting:
@@ -104,32 +169,56 @@ $$
 
 This mean that on average, you come out the same regardless of whether or not you bet or not.
 
-Odds are of the form $x : y$ for the odds of $A$. To obtain the probability from odds, we follow the following formula:
+Odds are of the form $x : y$ for the odds of $A$. The $x$, i.e., the term on the left is what we put in the numerator in the following formula to obtain the probability of $A$:
 $$
 P(A) = \frac{x}{x + y}
 $$
-Generally, when a bookie (or anyone really) bets you on odds $x : y$, what they are communicating is that they think it is a fair bet, *for them*, to put up $\$ y$ for every $\$ x$ that you put up in the bet. For example, if someone posts odds of $1 : 5$ for some event $A$ occurring, this means that they are willing to bet against you $\$ 5$ for every $\$ 1$ you put up. Let us see how this is a fair bet (in their eyes). According to them, they believe that the expected utility of betting is:
+Generally, when a bookie (or anyone really) bets you on odds $x : y$, what they are communicating is that they think it is a fair bet, *for them*, to put up $\$ y$ for every $\$ x$ that you put up in the bet. The bookie is betting that $A$ does not happen, you are betting that $A$ happens. 
+
+For example, if someone posts odds of $1 : 5$ for the event of the horse Bob coming first, this means that they are willing to bet against you $\$ 5$ for every $\$ 1$ you put up. You win if Bob comes first, they win if Bob does not come first. Let us see how this is a fair bet (in your opponent better's eyes). Firstly, the fact that they put to you $1 : 5$ odds means that they believe that the probability of Bob winning is:
+$$
+P(\text{Bob Wins}) = \frac{1}{1 + 5} = \frac{1}{6}
+$$
+Hence, the probability that they believe Bob loses is:
+$$
+P(\text{Bob Loses}) = 1 - P(BobWin) = \frac{5}{6}
+$$
+We can then calculate the expected utility of betting (for the better):
+
+$$
+EU(\text{Bet that Bob Loses}) = P(\text{Bob Loses})U(\text{Bet and Bob Loses}) + P(\text{Bob Wins})U(\text{Bet and Bob Wins})
+$$
+Now recall, that they will put up \$5 for every \$1 you put into the "pot" of total winnings. So if Bob loses, then you lose the \$1 that you put in (remember, you're betting that Bob wins;your opponent is betting that Bob loses), and your opponent comes out at the end of the day with \$ 1 more. Hence, $U(\text{Bet and Bob Loses}) = \$ 1$ Likewise, if Bob wins then you come out \$5 richer and your opponent now is down \$5. So from their perspective $U(\text{Bet and Bob Wins}) = -\$5$. Hence:
 
 $$
 \begin{align}
-EU(bet) &= P(A)U(bet \& A) + P(\neg A)U(bet \& \neg A)\\
-&= \frac{5}{6} \$ 1 + \frac{1}{6} -\$ 5 \\
-&= \$ \frac{5}{6} - \$ \frac{5}{6}\\
-&= 0
+EU(\text{Bet that Bob Loses}) &= \frac{5}{6} \$1 + \frac{1}{6} -\$5\\
+&= \frac{5}{6} \$1 - \frac{1}{6} \$5\\
+&= \$0
 \end{align}
 $$
-And we have the expected utility of not betting is just $\$ 0$. Hence, from their perspective, it is a fair bet.
+And of course, the expected utility of not betting is also $\$0$ (after all, neither you nor your opponent put up any money to bet on). So, from your opponent's perspective, this is a fair bet.
 
-It is crucial to recognize that you yourself may assign different probabilities to the event $A$. If you think that $A$ has probability $\frac{1}{6}$ and that $\neg A$ has probability $\frac{5}{6}$ then from your perspective, the bet is not fair, its advantageous to you!
-
+It is crucial to recognize that you yourself may assign different probabilities to the event $A$. If you think that Bob losing is such that:
+$$
+P(\text{Bob Losing}) = \frac{1}{6}
+$$
+and hence that:
+$$
+P(\text{Bob Winning}) = \frac{5}{6}
+$$
+then from your perspective if you bet on Bob winning and Bob in fact wins, then you come away with \$5 more. Hence for you, $U(\text{Bet and Bob Wins}) = \$5$. Likewise, if you bet on Bob winning and Bob loses then you lose \$1. Hence: $U(\text{Bet and Bob Loses}) = -\$1$. Therefore, for you, your expected utility is:
 $$
 \begin{align}
-EU(bet) &= P(A)U(bet \& A) + P(\neg A)U(bet \& \neg A)\\ 
-&= \frac{1}{6} -\$ 1 + \frac{5}{6} \$ 5\\
-&= - \$ \frac{1}{6} + \$ \frac{25}{6}\\
+EU(bet) &= P(\text{Bob Wins})U(\text{Bet and Bob Wins}) + P(\text{Bob Loses})U(\text{Bet and Bob Loses})\\ 
+&= \frac{5}{6} \$ 5 + \frac{1}{6} -\$ 1\\
+&=  \frac{5}{6} \$ 5 - \frac{1}{6} \$1\\
+&= \$ \frac{24}{6}\\
 &= \$ 4
 \end{align}
 $$
-and again, the expected utility of not betting is $\$0$. 
+and again, the expected utility of not betting is $\$0$. So if you believe that the probability of Bob winning is $5/6$ then from your perspective, you should take the bet that your opponent is offering you. From your perspective, you expect to be winning \$4 in the long run.
+
+The key point here is that just because your opponent (the bookie) thinks that a given odds is a fair bet, that does not necessarily mean that you think it is a fair bet. You might, as just shown, think that in fact, it is an unfair bet in your favour. Equally, you might think that it is an unfair bet against you (e.g., if the probability of Bob winning is less than $1/6$ in the example just given). 
 
 
