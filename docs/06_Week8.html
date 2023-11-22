@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Week Five Discussion Notes</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">LPS/Phil 31 Discussion Notes</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Intro</a>
+</li>
+<li>
+  <a href="01_Week2.html">Week 2</a>
+</li>
+<li>
+  <a href="02_Week3.html">Week 3</a>
+</li>
+<li>
+  <a href="03_Week4.html">Week 4</a>
+</li>
+<li>
+  <a href="04_Week5.html">Week 5</a>
+</li>
+<li>
+  <a href="05_Week6.html">Week 6</a>
+</li>
+<li>
+  <a href="06_Week8.html">Week 8</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Week Five Discussion Notes</h1>
+
+</div>
+
+
+<div id="decision-theory" class="section level1">
+<h1>Decision Theory</h1>
+<p>Decision theory is the theory of rational decision making. Problems
+in decision theory are often presented using a decision matrix. Here is
+an example:</p>
+<center>
+<p><img src="Pictures/Week8Picture.png" /></p>
+</center>
+<p>This is a visualization of the decision problem. It is not the
+decision problem itself! The visualization contains all the information
+we would need in order to understand a decision problem.</p>
+<p>In any case, there are a couple of important components of a decision
+problem: - States: These are ways that the world could be. They are not
+actions, nor are they outcomes of agents taking actions (though we could
+extend our formalism so that we could consider the states to be other
+agents and their actions). Often, when characterizing the states we also
+specify the probabilities of such states. - Outcomes: These are what in
+fact happens <em>given that we perform an act and the state of the world
+is a certain way</em>. In the example above, the outcomes are what
+happens given that we either buy or do not buy insurance and either
+there is a fire or there is not. Often, outcomes are given either in
+terms of money or they are given in terms of utility. We will get to the
+concept of utility in the next section. - Acts: In decision theory, we
+are usually concerned with particular actions which an agent can take.
+Importantly, the actions which an agent can take must be specified in
+such a way that the agent can only pick one action amongst the possible
+actions. For example, the formalism and visualization does not work, if
+the agent can pick both buy insurance and do not buy insurance.</p>
+</div>
+<div id="utility" class="section level1">
+<h1>Utility</h1>
+<p>What is utility? Well, one thing is for sure, utility is not monetary
+value. But just what it is exactly, turns out to be a quite nuanced and
+complicated question. The word “utility” is also used in a number of
+different senses in the literature and sometimes it is better to use the
+term “value” instead. Generally, when we are faced with a decision
+problem, we have a number of outcomes to consider. For example, in the
+visualization above, I need to consider the value of my house burning
+down and me having insurance (and the value of the house burning down
+and me not having insurance, and the value of the house not burning down
+and me having insurance, and the value of the house not burning down and
+me not having insurance). One way of making my reasoning more precise is
+to assign numbers to these outcomes as a way to formalize this notion of
+“value” or “utility”.</p>
+<p>We can think of utility as a function from action-state pairs to
+numbers:</p>
+<p><span class="math display">\[
+U(A\&amp; S) = u_1
+\]</span></p>
+<p>This says that, I (or the agent under consideration), assigns utility
+<span class="math inline">\(u_1\)</span> to the outcome which obtains
+when <span class="math inline">\(A\&amp; S\)</span> occurs.</p>
+<p>Now, again, monetary value is not utility. But often we use money as
+a proxy for utility. Most individuals value money and it is
+approximately true that every dollar is valued as much as every other
+dollar. The reason why monetary value is not to be identified with
+utility is because it is in fact not true that every dollar is valued as
+much as every other dollar. An individual with only $100 in the bank
+account probably values the next dollar much more than an individual
+with $10000000 in their bank account.</p>
+</div>
+<div id="expected-utility" class="section level1">
+<h1>Expected Utility</h1>
+<p>What we want to know is which act we should perform. To do so,
+decision theory recommends that we perform the act which maximizes
+expected utility. What is expected utility? It is the utility that we
+should expect given that we perform an act. And how do we determine
+that? We calculated the average utility <em>weighted by how likely the
+states are</em>. Let us consider an example:</p>
+<center>
+<p><img src="Pictures/Week8Picture2.png" width="350" /></p>
+</center>
+<p>Here we are considering a bet on whether or not a coin comes up heads
+or tails. You pay $1 to bet on the coin landing heads. If the coin lands
+heads then you get your dollar back and an additional $9. If the coin
+lands tails then you have lost your $1 and get nothing in addition. If
+you do not bet then you keep your dollar in your wallet. So the outcomes
+here reflect the total amount of money that ends up in your wallet by
+the end of this whole process.</p>
+<p>This looks like a pretty good bet right? Well, we have actually left
+out a crucial piece of information: the bias of the coin. Suppose that
+you believe that the coin is fair. Then what payoff should you expect
+from betting?</p>
+<p>Half of the time, the coin will come out heads and we get $10, and
+the other half of the time, the coin will come out tails and we get -$1.
+Suppose we take this bet multiple times (each time starting with only $1
+in our pocket). We keep track of our outcome everytime. At the end we
+tally up our outcomes and divide by the total number of times we bet.
+Suppose that we do this bet 100 times. 50 out of 100 times we bet and
+get heads and win $10; the other 50 rounds we bet and get tails and lose
+-$1. So we end up with:</p>
+<p><span class="math display">\[
+\frac{(50 \times \$ 10) + (50 \times -\$ 1)}{100} = \frac{\$ 500 -
+\$50}{100} = \frac{\$450}{100} = \$ 4.5
+\]</span> So the average amount of money we get from betting is $ 4.5.
+This is an artificially generated sample. In reality, even if the coin
+is fair, we will rarely get exactly 50 heads and 50 tails. To calculate
+the expected utility, what we do is pretend that this is what happens;
+that the outcomes that we get exactly match the probabilities assigned
+to the states:</p>
+<p><span class="math display">\[
+\begin{align}
+EU(bet) &amp;= P(Heads)U(Bet \&amp; Heads) + P(Tails)U(Bet \&amp;
+Tails)\\
+        &amp;= (0.5)(\$ 10) + (0.5)(-\$ 1)\\
+        &amp;= \$ 4.5
+\end{align}
+\]</span></p>
+<p>So here we get the same answer. Now if we want to calculate the
+expected utility of not betting we get:</p>
+<p><span class="math display">\[
+EU(\neg bet) = (0.5)(\$ 1) + (0.5)(\$ 1) = \$1
+\]</span> which gives intuitively the right answer. We should expect to
+keep our $1 if we do not bet any money. Here we see that the expected
+utility of betting is greater than the expected utility of not betting.
+Hence, decision theory recommends that we should take this bet.</p>
+<p>Now, what if we do not think that the coin is fair? What if we think
+that the coin is biased towards tails really heavily. Suppose that <span
+class="math inline">\(P(Heads) = 0.01\)</span> and <span
+class="math inline">\(P(Tails) = 0.99\)</span>. Then the expected
+utility will change:</p>
+<p><span class="math display">\[
+\begin{align}
+&amp;EU(bet) = (0.01)(\$10) + (0.99)(-\$1) = \$0.1 - \$0.99 = -\$0.89\\
+&amp;EU(\neg bet) = (0.01)(\$1) + (0.99)(\$1) = \$1
+\end{align}
+\]</span> Here we see that <span class="math inline">\(EU(bet) &lt;
+EU(\neg bet)\)</span>. Therefore, decision theory recommends that we do
+not bet.</p>
+<p>The official formula for expected utility is:</p>
+<p><span class="math display">\[
+EU(A) = \sum_{i=1}^{n} P(S_i) U(A\&amp;S_i)
+\]</span> which says to sum from <span class="math inline">\(i =
+1\)</span> to <span class="math inline">\(n\)</span>, the product of
+<span class="math inline">\(P(S_i)\)</span> and <span
+class="math inline">\(U(A \&amp; S_i)\)</span>. In the example we just
+considered, the utility is just the monetary value. However, again,
+utility is generally not to be identified with money.</p>
+</div>
+<div id="fair-bets-and-odds" class="section level1">
+<h1>Fair Bets and Odds</h1>
+<p>We have a fair bet when the expected utility of betting is equal to
+the expected utility of not betting:</p>
+<p><span class="math display">\[
+EU(bet) = EU(\neg bet)
+\]</span></p>
+<p>This mean that on average, you come out the same regardless of
+whether or not you bet or not.</p>
+<p>Odds are of the form <span class="math inline">\(x : y\)</span> for
+the odds of <span class="math inline">\(A\)</span>. To obtain the
+probability from odds, we follow the following formula: <span
+class="math display">\[
+P(A) = \frac{x}{x + y}
+\]</span> Generally, when a bookie (or anyone really) bets you on odds
+<span class="math inline">\(x : y\)</span>, what they are communicating
+is that they think it is a fair bet, <em>for them</em>, to put up <span
+class="math inline">\(\$ y\)</span> for every <span
+class="math inline">\(\$ x\)</span> that you put up in the bet. For
+example, if someone posts odds of <span class="math inline">\(1 :
+5\)</span> for some event <span class="math inline">\(A\)</span>
+occurring, this means that they are willing to bet against you <span
+class="math inline">\(\$ 5\)</span> for every <span
+class="math inline">\(\$ 1\)</span> you put up. Let us see how this is a
+fair bet (in their eyes). According to them, they believe that the
+expected utility of betting is:</p>
+<p><span class="math display">\[
+\begin{align}
+EU(bet) &amp;= P(A)U(bet \&amp; A) + P(\neg A)U(bet \&amp; \neg A)\\
+&amp;= \frac{5}{6} \$ 1 + \frac{1}{6} -\$ 5 \\
+&amp;= \$ \frac{5}{6} - \$ \frac{5}{6}\\
+&amp;= 0
+\end{align}
+\]</span> And we have the expected utility of not betting is just <span
+class="math inline">\(\$ 0\)</span>. Hence, from their perspective, it
+is a fair bet.</p>
+<p>It is crucial to recognize that you yourself may assign different
+probabilities to the event <span class="math inline">\(A\)</span>. If
+you think that <span class="math inline">\(A\)</span> has probability
+<span class="math inline">\(\frac{1}{6}\)</span> and that <span
+class="math inline">\(\neg A\)</span> has probability <span
+class="math inline">\(\frac{5}{6}\)</span> then from your perspective,
+the bet is not fair, its advantageous to you!</p>
+<p><span class="math display">\[
+\begin{align}
+EU(bet) &amp;= P(A)U(bet \&amp; A) + P(\neg A)U(bet \&amp; \neg A)\\
+&amp;= \frac{1}{6} -\$ 1 + \frac{5}{6} \$ 5\\
+&amp;= - \$ \frac{1}{6} + \$ \frac{25}{6}\\
+&amp;= \$ 4
+\end{align}
+\]</span> and again, the expected utility of not betting is <span
+class="math inline">\(\$0\)</span>.</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

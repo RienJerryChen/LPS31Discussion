@@ -33,7 +33,7 @@ One very useful case of the Theorem of Total Probability is when the partition t
 $$
 P(A) = P(A|B)P(B) + P(A|\sim B)P(\sim B)
 $$
-# Bayes Theorem (General)
+# Bayes Theorem - General
 
 Recall Bayes Theorem:
 

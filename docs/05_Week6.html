@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Week Five Discussion Notes</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">LPS/Phil 31 Discussion Notes</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Intro</a>
+</li>
+<li>
+  <a href="01_Week2.html">Week 2</a>
+</li>
+<li>
+  <a href="02_Week3.html">Week 3</a>
+</li>
+<li>
+  <a href="03_Week4.html">Week 4</a>
+</li>
+<li>
+  <a href="04_Week5.html">Week 5</a>
+</li>
+<li>
+  <a href="05_Week6.html">Week 6</a>
+</li>
+<li>
+  <a href="06_Week8.html">Week 8</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Week Five Discussion Notes</h1>
+
+</div>
+
+
+<div id="the-rule-of-succession" class="section level1">
+<h1>The Rule of Succession</h1>
+<p>Suppose that we are flipping a coin. The Rule of Succession states
+that after observing <span class="math inline">\(m\)</span> heads in
+<span class="math inline">\(n\)</span> tosses, the probability of heads
+on toss <span class="math inline">\(n+1\)</span> is:</p>
+<p><span class="math display">\[
+P_{n+1}(H_{n+1}) = \frac{m+1}{n + 2}
+\]</span></p>
+<p>Generally, for two variables <span class="math inline">\(h\)</span>
+and <span class="math inline">\(t\)</span> which represent our initial
+beliefs about how likely the coin is to land heads or tails (i.e., <span
+class="math inline">\(h = P(H)\)</span> and <span
+class="math inline">\(t = P(T)\)</span>), then: <span
+class="math display">\[
+P_{n+1} (H_{n+1}) = \frac{m + h}{n + h + t}
+\]</span> and this generalizes to three kinds of events (e.g., a box
+filled with three different colored balls) then let <span
+class="math inline">\(g\)</span> represent our prior beliefs about how
+likely it is that we are to get the green balls; <span
+class="math inline">\(r\)</span> for the red balls; and <span
+class="math inline">\(b\)</span> for the blue balls. Let <span
+class="math inline">\(R\)</span> be the proposition that we draw a red
+ball. Then: <span class="math display">\[
+P_{n + 1}(R_{n+1}) = \frac{m + r}{n + r + g + b}
+\]</span> Notice that the denominator <span class="math inline">\(n + r
++ g + b\)</span> is just <span class="math inline">\(n\)</span> (the
+number of previous draws from the box that we have made) plus the three
+variables representing the probabilities of drawing green, red, and blue
+respectively.</p>
+</div>
+<div id="deriving-the-rule-of-succession-bonus-not-on-quiz"
+class="section level1">
+<h1>Deriving the Rule of Succession (BONUS: NOT ON QUIZ)</h1>
+<p>You might be curious as to how we get the Rule of Succession. This is
+covered here. The treatment here follows the one in William Feller’s
+<em>An Introduction to Probability Theory and its Applications</em>.</p>
+<p>Suppose we have <span class="math inline">\(N + 1\)</span> urns. Each
+urn contains <span class="math inline">\(N\)</span> balls [Note: we
+start counting from <span class="math inline">\(0\)</span>]. The balls
+can be red or white: for the <span class="math inline">\(k\)</span>th
+urn, that urn contains <span class="math inline">\(k\)</span> red balls
+and <span class="math inline">\(N - k\)</span> white balls. For example,
+for <span class="math inline">\(N = 3\)</span> we have the following
+picture:</p>
+<center>
+<p><img src="Pictures/Week61.png" width="350" /></p>
+</center>
+<p>We consider the following experiment: we first pick an urn at random
+and we draw from that urn <span class="math inline">\(d\)</span> times
+with replacement (i.e., we always put the ball back into the urn). So if
+we pick urn <span class="math inline">\(k\)</span> then the probability
+that we get <span class="math inline">\(d\)</span> red balls is <span
+class="math inline">\((k/N)^d\)</span> (the <span
+class="math inline">\(k\)</span> is from the fact that in urn <span
+class="math inline">\(k\)</span>, there are <span
+class="math inline">\(k\)</span> red balls; the <span
+class="math inline">\(N\)</span> is from the fact that each urn has
+<span class="math inline">\(N\)</span> balls; and the <span
+class="math inline">\(d\)</span> from the fact that we are drawing from
+that urn <span class="math inline">\(d\)</span> times).</p>
+<p>Let <span class="math inline">\(K_0\)</span> be the proposition that
+we picked urn <span class="math inline">\(0\)</span>, <span
+class="math inline">\(K_1\)</span> the proposition that we picked urn
+<span class="math inline">\(1\)</span>, and so on up to <span
+class="math inline">\(K_{N}\)</span>. Note that in our experiment, we
+must pick at least one of the urns the collection of propositions <span
+class="math inline">\(\{K_1,K_2,\ldots,K_N\}\)</span> is exhaustive.
+That collection also contains propositions which are mutually exclusive
+from one another. Hence, it forms a partition. Let <span
+class="math inline">\(A\)</span> be the proposition that all the balls
+we draw in <span class="math inline">\(d\)</span> draws are red
+(equivalently, we draw no white balls in <span
+class="math inline">\(d\)</span> draws). Therefore, by the Theorem of
+Total Probability:</p>
+<p><span class="math display">\[
+P(A) = P(A|K_0)P(K_0) + P(A|K_1)P(K_1) + \cdots + P(A|K_{N})P(K_{N})
+\]</span></p>
+<p>Now we just showed earlier that <span class="math inline">\(P(A|K_i)
+= (i/N)^d\)</span> for any <span class="math inline">\(i\)</span>.
+Furthermore, the probability that we pick any <span
+class="math inline">\(K_i\)</span>, that is <span
+class="math inline">\(P(K_i)\)</span>, is just <span
+class="math inline">\(1/N+1\)</span>. Therefore:</p>
+<p><span class="math display">\[
+P(A) = \left(\frac{0}{N^d} \times \frac{1}{N+1}\right) +
+\left(\frac{1^d}{N^d} \times \frac{1}{N+1}\right) +
+\left(\frac{2^d}{N^d} \times \frac{1}{N+1}\right) + \cdots +
+\left(\frac{N^d}{N^d} \times \frac{1}{N+1}\right)
+\]</span></p>
+<p>which, if we do a little algebra, just becomes:</p>
+<p><span class="math display">\[
+P(A) = \frac{1^d + 2^d + \cdots + N^d}{N^d(N+1)}
+\]</span> Now let <span class="math inline">\(B\)</span> be the
+proposition that we draw only reds in <span class="math inline">\(d +
+1\)</span> draws. We can follow the exact same math as we did to get
+<span class="math inline">\(P(A)\)</span> to get:</p>
+<p><span class="math display">\[
+P(B) = \frac{1^{d+1} + 2^{d+1} + \cdots + N^{n+1}}{N^{d+1}(N+1)}
+\]</span> We can also note that <span class="math inline">\(P(A \&amp;
+B) = P(B)\)</span>. Why? If we draw only reds in <span
+class="math inline">\(d + 1\)</span> draws from the urn then it is of
+course also true that we only drew reds in <span
+class="math inline">\(d\)</span> draws. Now what we want is <span
+class="math inline">\(P(B|A)\)</span> which by the definition of
+conditional probability: <span class="math display">\[
+P(B|A) = \frac{P(A \&amp; B)}{P(A)} = \frac{P(B)}{P(A)}
+\]</span> (Note: You should be able to follow up until now, what follows
+is slightly more advanced). Now the numerator of <span
+class="math inline">\(P(A)\)</span>, that is, <span
+class="math inline">\(1^d + 2^d + \cdots + N^d\)</span> can be
+approximated by the area between the <span
+class="math inline">\(x\)</span>-axis and the graph of the function
+<span class="math inline">\(f(x) = x^d\)</span>. Hence we can write:
+<span class="math display">\[
+1^d + 2^d + \cdots + N^d \approx \int_{0}^{N} x^d dx
+\]</span> which results in:</p>
+<p><span class="math display">\[
+P(A) \approx \frac{1}{N^d(N+1)} \times \int_{0}^{N} x^d dx =
+\frac{N}{N+1} \times \frac{1}{d+1} \approx \frac{1}{d+1}
+\]</span> I’ve just solved it here, so do not worry about the integral.
+The important part is just that we are replacing the numerator with
+another mathematical expression which is an approximation (hence why we
+move from <span class="math inline">\(=\)</span> to <span
+class="math inline">\(\approx\)</span>). Now we repeat this process for
+<span class="math inline">\(P(B)\)</span> to get:</p>
+<p><span class="math display">\[
+P(B) \approx \frac{1}{N^{d+1}(N+1)} \times \int_{0}^{N} x^{d+1} dx =
+\frac{N}{N+1} \times \frac{1}{(d+1)+1} \approx \frac{1}{d + 2}
+\]</span></p>
+<p>Therefore: <span class="math display">\[
+P(B|A) = \frac{P(B)}{P(A)} \approx \frac{\frac{1}{d+2}}{\frac{1}{d+1}} =
+\frac{d+1}{d+2}
+\]</span></p>
+<p>And that is how we get the original rule of succession.</p>
+<p>Here is how we interpret it under this presentation. Supposing that
+every composition of an urn is equally probable, and if <span
+class="math inline">\(d\)</span> trials give us only red balls, then the
+probability of a red ball on the next trial is <span
+class="math inline">\(d+1/d+2\)</span>.</p>
+</div>
+<div
+id="the-problem-of-induction-from-jeffrey-barrett-and-kyle-stanford-prediction"
+class="section level1">
+<h1>The Problem of Induction (from Jeffrey Barrett and Kyle Stanford
+“Prediction”)</h1>
+<center>
+<p><img src="Pictures/Week62.png" /></p>
+</center>
+<center>
+<p><img src="Pictures/Week63.png" /></p>
+</center>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
