@@ -94,7 +94,7 @@ EU(A) = \sum_{i=1}^{n} P(S_i) U(A\&S_i)
 $$
 which says to sum from $i = 1$ to $n$, the product of $P(S_i)$ and $U(A \& S_i)$. In the example we just considered, the utility is just the monetary value. However, again, utility is generally not to be identified with money.
 
-# Tipping Points
+# Tipping Points 
 
 Suppose that we are given the following problem: we want to decide whether or not to bring an umbrella. If we bring an umbrella and it rains, then we are happy. If we bring an umbrella and it does not rain, we are slightly unhappy since we have to lug an umbrella around. If we do not bring an umbrella and it rains, then we are very unhappy. If we do not bring an umbrella and it does not rain, then we are happy. 
 
