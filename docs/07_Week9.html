@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Week Nine Discussion Notes</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">LPS/Phil 31 Discussion Notes</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Intro</a>
+</li>
+<li>
+  <a href="01_Week2.html">Week 2</a>
+</li>
+<li>
+  <a href="02_Week3.html">Week 3</a>
+</li>
+<li>
+  <a href="03_Week4.html">Week 4</a>
+</li>
+<li>
+  <a href="04_Week5.html">Week 5</a>
+</li>
+<li>
+  <a href="05_Week6.html">Week 6</a>
+</li>
+<li>
+  <a href="06_Week8.html">Week 8</a>
+</li>
+<li>
+  <a href="07_Week9.html">Week 9</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Week Nine Discussion Notes</h1>
+
+</div>
+
+
+<div id="betting-and-probabilities" class="section level1">
+<h1>Betting and Probabilities</h1>
+<p>We now consider posted bets. When someone (the bookie) posts a bet,
+for example, with odds <span class="math inline">\(2:3\)</span> for Bob
+winning, this means that you have to pay <span
+class="math inline">\(\$2\)</span> in order to join the bet for a total
+pot of <span class="math inline">\(\$5\)</span>. The bookie will pay you
+<span class="math inline">\(\$3\)</span> if Bob wins and you lose <span
+class="math inline">\(\$2\)</span> if Bob loses. We may consider the
+situation a bit more abstractly though. Suppose the bookie is walking
+around with a sign saying “ODDS: 2:3”. You can buy as many “bets” so to
+speak from the bookie. Every ticket costs <span
+class="math inline">\(\$2\)</span>, and the payout of every ticket (if
+you win) is <span class="math inline">\(\$3\)</span> (as well as the
+price of your ticket back, so <span class="math inline">\(\$5\)</span>
+is what the Bookie actually hands you if you win). For example, if we
+buy 10 tickets, then we pay <span class="math inline">\(10 \times \$2 =
+\$20\)</span>. All of these tickets are the same, we win if Bob wins,
+and we lose if Bob loses. So if Bob wins, we get <span
+class="math inline">\(\$5 \times 10 = \$50\)</span> dollars in total
+from the Bookie, with a total profit of <span
+class="math inline">\(\$30\)</span> (since we paid <span
+class="math inline">\(\$20\)</span> to get the tickets in the first
+place). If Bob loses, then we just lose our <span
+class="math inline">\(\$20\)</span>. This is the more general situation
+that we often consider: buying multiple tickets to enter a bet.</p>
+<p>Now there is an intimate relationship between bets and probabilities.
+Suppose I do not know what you think the probability of Bob winning is.
+I can pose to you some bets in order to try to tease out your
+probabilities: I say to you that I’ll enter into a bet with you on
+whether or not Bob will win. I’m willing to put down <span
+class="math inline">\(\$30\)</span> if Bob loses. Suppose that you say
+you are willing to put down <span class="math inline">\(\$20\)</span>
+(in favour of Bob winning). By saying that that you are willing to put
+down <span class="math inline">\(\$20\)</span> in response to my <span
+class="math inline">\(\$30\)</span> you have communicated to me all the
+information I need to deduce what your probability of Bob winning is.
+According to decision theory, this is due to a crucial assumption: you
+would not say that you are willing to put up <span
+class="math inline">\(\$20\)</span> if you did not think that the bet
+was unfair to you. In other words, you think the bet is fair when you
+put up <span class="math inline">\(\$20\)</span> against my <span
+class="math inline">\(\$30\)</span>. Since the expected utility of both
+of us not betting is <span class="math inline">\(\$0\)</span> (neither
+of us gain nor lose money) and a fair bet means that <span
+class="math inline">\(EU(\text{bet}) = EU(\text{Don&#39;t
+Bet})\)</span>, this means that <span class="math inline">\(EU(bet) =
+0\)</span>. Then by the definition of expected utility: <span
+class="math display">\[
+EU(\text{bet}) = P(\text{Bob Wins})U(\text{Bet &amp; Bob Wins}) +
+P(\text{Bob Loses})U(\text{Bet &amp; Bob Loses}) - \text{cost}
+\]</span> We will represent it this way. Here we add the “cost” term to
+represent that this is the amount of money which you put into the pot to
+participate in the bet in the first place. Here we will count the
+utilities in terms of how much money is gained: <span
+class="math display">\[
+\begin{align}
+EU(\text{bet}) &amp;= P(\text{Bob Wins})\$ 30 + P(\text{Bob Loses})\$0 -
+\$20\\
+&amp;= P(\text{Bob Wins}) \$30 - \$20
+\end{align}
+\]</span> then recall that since <span
+class="math inline">\(EU(\text{bet}) = 0\)</span>, we have that: <span
+class="math display">\[
+0 = P(\text{Bob Wins}) \$30 - \$20
+\]</span> From which it follows that: <span class="math display">\[
+P(\text{Bob Wins}) = \frac{\$20}{\$30} = \frac{2}{3}
+\]</span></p>
+<p>Generally, if we want to know what probability some person, say
+person Q, assigns to some proposition <span
+class="math inline">\(A\)</span>, then we may pose to them a bet on
+<span class="math inline">\(A\)</span>. Suppose we say that we are
+willing to put up <span class="math inline">\(\$x\)</span> if <span
+class="math inline">\(A\)</span> turns out to be false. If that person
+says they are willing to put up <span class="math inline">\(\$y\)</span>
+(in favour of <span class="math inline">\(A\)</span>) to participate in
+this bet, then: <span class="math display">\[
+EU(\text{bet}) = P(A)U(\text{Bet &amp; A}) + P(\sim A) U(\text{bet &amp;
+}\sim A) - c
+\]</span> Since the utility of betting and <span
+class="math inline">\(~A\)</span> means that Q gains no money we have
+that <span class="math inline">\(U(\text{bet &amp;}\sim A) = 0\)</span>.
+So we get: <span class="math display">\[
+EU(\text{bet}) = P(A) U(\text{Bet &amp;} A) - c
+\]</span> Since Q says that they are willing to put up <span
+class="math inline">\(\$y\)</span> to participate in the bet this means
+that Q thinks that <span class="math inline">\(EU(\text{bet}) =
+EU(\text{Don&#39;t Bet}) = 0\)</span>. Therefore we get: <span
+class="math display">\[
+0 = P(A)U(\text{Bet &amp; }A) - c
+\]</span> The utility for Q for betting and it being the case that <span
+class="math inline">\(A\)</span> is <span
+class="math inline">\(\$x\)</span> (this is the amount that they win)
+and the total cost for them is <span class="math inline">\(\$y\)</span>
+(this is the amount that they paid). Therefore: <span
+class="math display">\[
+0 = P(A)\$x - \$y
+\]</span> In lecture, you would have seen this as: <span
+class="math display">\[
+EU(\text{Buy Bet}) = xp - c
+\]</span> It’s the same equation, I just use <span
+class="math inline">\(\$x\)</span> for <span
+class="math inline">\(x\)</span> and <span
+class="math inline">\(\$y\)</span> for <span
+class="math inline">\(c\)</span> instead. The expected utility of buying
+the bet will be <span class="math inline">\(0\)</span> when you are
+considering a fair bet (since to be a fair bet, <span
+class="math inline">\(EU(\text{Buy Bet}) = EU(\text{Don&#39;t Buy
+Bet})\)</span> where <span class="math inline">\(EU(\text{Don&#39;t Buy
+Bet}) = 0\)</span>). In any case, solving for <span
+class="math inline">\(P(A)\)</span>, we get: <span
+class="math display">\[
+P(A) = \frac{\$y}{\$x} = \frac{y}{x}
+\]</span></p>
+</div>
+<div id="dutch-books" class="section level1">
+<h1>Dutch Books</h1>
+<p>A dutch book is a collection of bets (e.g., a bet on <span
+class="math inline">\(A\)</span>, a bet on <span
+class="math inline">\(B\)</span>, a bet on <span
+class="math inline">\(C\)</span>, and so on) such that there is a way to
+guarantee a loss to the individual who holds such bets. (Remember, a
+collection of bets expresses a collection of probabilities! To say that
+you are willing to bet <span class="math inline">\(\$x\)</span> with
+another person putting up <span class="math inline">\(\$y\)</span>, is
+sufficient to determine a probability!).</p>
+<p>Every Dutch Book problem you encounter will have the following
+structure and solution:</p>
+<ol style="list-style-type: decimal">
+<li><p>You will be given some probabilities of some propositions (which
+most likely will violate a probability rule which you know) that some
+person holds. We will call this person Jack. You need to first convert
+these probabilities into bets (this collection of bets is the Dutch
+Book). In this explanation, I presuppose that you are only given
+probabilities of three propositions: <span
+class="math inline">\(A,B,C\)</span>.</p></li>
+<li><p>To convert the probabilities into bets, consider <span
+class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(Z\)</span> tickets for any proposition <span
+class="math inline">\(Z\)</span>. These are tickets such that if person
+A sells a <span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(Z\)</span> ticket to person B for <span
+class="math inline">\(\$c\)</span> and it is the case that <span
+class="math inline">\(Z\)</span> is true, then person A has to give
+person B <span class="math inline">\(\$1\)</span>. If <span
+class="math inline">\(Z\)</span> is not true (i.e., false), then person
+A does not have to pay person B any money. If person <span
+class="math inline">\(A\)</span> buys a <span
+class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(Z\)</span> ticket from person <span
+class="math inline">\(B\)</span> for <span
+class="math inline">\(\$c\)</span> and it is the case that <span
+class="math inline">\(Z\)</span> is true, then person B has to pay
+person A <span class="math inline">\(\$1\)</span>. If <span
+class="math inline">\(Z\)</span> is not true, then person B does not pay
+person A any money.</p></li>
+<li><p>Find the cost of the <span
+class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(A\)</span>, <span
+class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(B\)</span>, <span
+class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(C\)</span> that Jack would think is fair. To do
+this we use the formula from earlier: <span class="math display">\[
+0 = xp - c
+\]</span> Here <span class="math inline">\(x\)</span> = <span
+class="math inline">\(\$1\)</span> and <span
+class="math inline">\(p\)</span> is the probability of whichever
+proposition the ticket is considering. <em>What you want to do is solve
+for <span class="math inline">\(c\)</span></em>. For example, in the
+case of the <span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(A\)</span> ticket we get: <span
+class="math display">\[
+0 = xP(A) - c
+\]</span> Then solve for <span class="math inline">\(c\)</span> to get:
+<span class="math display">\[
+c = \$P(A)
+\]</span> (since <span class="math inline">\(x = \$1\)</span>). This is
+why I picked the payoff from the tickets to be <span
+class="math inline">\(\$1\)</span>. In such a case, <strong><em>the cost
+of a <span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(Z\)</span> ticket is just <span
+class="math inline">\(\$P(Z)\)</span></em></strong>. So the cost of the
+<span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(B\)</span> ticket is just <span
+class="math inline">\(\$ P(B)\)</span>. The cost of the <span
+class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(C\)</span> ticket is just <span
+class="math inline">\(\$ P(C)\)</span>.</p></li>
+<li><p>Now that we know the costs of the ticket which Jack thinks is
+fair, we need to buy and sell a combination of these tickets such that
+we are always guaranteed a profit from Jack. This is better illustrated
+by considering a number of examples:</p></li>
+</ol>
+<p><strong>[Example One]</strong> Suppose that Jack holds the following
+probabilities <span class="math inline">\(P(A) = 0.7\)</span> and <span
+class="math inline">\(P(\sim A) = 0.5\)</span>. Since <span
+class="math inline">\(A\)</span> and <span class="math inline">\(\sim
+A\)</span> are mutually exclusive, we have <span
+class="math inline">\(P(A \lor \sim A) = 1.2\)</span>. Here we violate
+the negation rule and the rule which states that no proposition can have
+probability greater than one.</p>
+<p>So, we have three tickets to consider here:</p>
+<ul>
+<li><span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(A\)</span> ticket which costs <span
+class="math inline">\(\$0.7\)</span></li>
+<li><span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(\sim A\)</span> ticket which costs <span
+class="math inline">\(\$0.5\)</span></li>
+<li><span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\((A\lor\sim A)\)</span> ticket which costs <span
+class="math inline">\(\$1.2\)</span></li>
+</ul>
+<p>Now, one of the Dutch Books here involves simply selling to Jack, a
+<span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\((A \lor \sim A)\)</span> ticket. That is, Jack
+will pay me <span class="math inline">\(\$1.2\)</span> to buy a <span
+class="math inline">\(\$1\)</span>-if-<span class="math inline">\((A\lor
+\sim A)\)</span> ticket. Now consider what happens:</p>
+<ul>
+<li>Suppose <span class="math inline">\(A\)</span> is true. Then <span
+class="math inline">\((A \lor \sim A)\)</span> is true. Since Jack
+bought a <span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\((A \lor \sim A)\)</span> ticket from me, I have to
+pay him <span class="math inline">\(\$1\)</span>. At the end of the day
+I got: <span class="math display">\[
+\text{End of the Day Earnings} = \$ 1.2 - \$ 1 = \$0.2
+\]</span></li>
+<li>Suppose <span class="math inline">\(\sim A\)</span> is true. Then
+<span class="math inline">\((A \lor \sim A)\)</span> is true. Since Jack
+bought a <span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\((A \lor \sim A)\)</span> ticket from me, I have to
+pay him <span class="math inline">\(\$1\)</span>. At the end of the day
+I got: <span class="math display">\[
+\text{End of the Day Earnings} = \$ 1.2 - \$ 1 = \$0.2
+\]</span></li>
+</ul>
+<p>This shows that no matter what happens (i.e., whether or not I am in
+a world where <span class="math inline">\(A\)</span> is true or <span
+class="math inline">\(\sim A\)</span> is true), I end the day with <span
+class="math inline">\(\$0.2\)</span> in profit. Hence, Jack gets Dutch
+Booked.</p>
+<p><strong>[Example Two]</strong> Suppose that Jack holds the following
+probabilities: <span class="math inline">\(P(A) = 0.3\)</span> and <span
+class="math inline">\(P(\sim A) = 0.2\)</span>. Here there are only two
+tickets to consider:</p>
+<ul>
+<li><span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(A\)</span> ticket which costs <span
+class="math inline">\(\$0.3\)</span></li>
+<li><span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(\sim A\)</span> ticket which costs <span
+class="math inline">\(\$0.2\)</span></li>
+</ul>
+<p>Now for the Dutch Book, you can buy one <span
+class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(A\)</span> ticket from Jack for <span
+class="math inline">\(\$0.3\)</span> and one <span
+class="math inline">\(\$1\)</span>-if-<span class="math inline">\(\sim
+A\)</span> ticket from Jack for <span
+class="math inline">\(\$0.2\)</span>. Consider what happens:</p>
+<ul>
+<li>If <span class="math inline">\(A\)</span> is true then because I own
+a <span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(A\)</span> ticket then Jack has to pay me <span
+class="math inline">\(\$1\)</span>. So: <span class="math display">\[
+\text{End of the Day Earnings} = -\$0.3 - \$0.2 + \$1 = \$0.5
+\]</span></li>
+<li>If <span class="math inline">\(\sim A\)</span> is true then because
+I own a <span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(\sim A\)</span> ticket then Jack has to pay me
+<span class="math inline">\(\$1\)</span>. So: <span
+class="math display">\[
+\text{End of the Day Earnings} = -\$0.3 - \$0.2 + \$1 = \$0.5
+\]</span></li>
+</ul>
+<p>No matter what happens (i.e., either <span
+class="math inline">\(A\)</span> or <span class="math inline">\(\sim
+A\)</span>), I come out with <span class="math inline">\(\$0.5\)</span>
+in profit. So Jack gets Dutch Booked.</p>
+<p><strong>[Example Three]</strong> Suppose that Jack holds the
+following probabilities: <span class="math inline">\(P(A) = 0.5\)</span>
+and <span class="math inline">\(P(A \&amp; B) = 0.6\)</span>. It is not
+entirely obvious that this violates any rule, but in fact it does
+violate a consequence of the rules. It turns out that the probability of
+any proposition cannot be less than the probability of that same
+proposition conjoined with a different proposition. That is, <span
+class="math inline">\(P(Z) \geq P(Z \&amp; W)\)</span> for any
+propositions <span class="math inline">\(Z\)</span> and <span
+class="math inline">\(W\)</span>. But lets see how this violation gets
+us a Dutch Book.</p>
+<p>Here there are two tickets to consider:</p>
+<ul>
+<li><span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(A\)</span> ticket which costs <span
+class="math inline">\(\$0.5\)</span></li>
+<li><span class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\((A \&amp; B)\)</span> ticket which costs <span
+class="math inline">\(\$0.6\)</span></li>
+</ul>
+<p>Here we want to buy from Jack a <span
+class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(A\)</span> ticket for <span
+class="math inline">\(\$0.5\)</span> and to sell to Jack a <span
+class="math inline">\(\$1\)</span>-if-<span class="math inline">\((A
+\&amp; B)\)</span> ticket for <span
+class="math inline">\(\$0.6\)</span>. Lets see how this plays out:</p>
+<ul>
+<li>Suppose that <span class="math inline">\(A\)</span> is true and
+<span class="math inline">\(B\)</span> is true. Since I hold a <span
+class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(A\)</span> ticket and <span
+class="math inline">\(A\)</span> is true, Jack has to pay me <span
+class="math inline">\(\$1\)</span>. Since Jack holds a <span
+class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\((A\&amp; B)\)</span> ticket and <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> are true, I have to pay Jack <span
+class="math inline">\(\$1\)</span>. We end up with: <span
+class="math display">\[
+\text{End of the Day Earnings} = -\$0.5 + \$0.6 +\$1 -\$1 = \$0.1
+\]</span></li>
+<li>Suppose that <span class="math inline">\(A\)</span> is true and
+<span class="math inline">\(B\)</span> is false. Since I hold a <span
+class="math inline">\(\$1\)</span>-if-<span
+class="math inline">\(A\)</span> ticket and <span
+class="math inline">\(A\)</span> is true, Jack has to pay me <span
+class="math inline">\(\$1\)</span>. Jack gets nothing from his <span
+class="math inline">\(\$1\)</span>-if-<span class="math inline">\((A
+\&amp; B)\)</span> ticket since <span class="math inline">\(B\)</span>
+is false (hence the conjunction is false). So: <span
+class="math display">\[
+\text{End of the Day Earnings} = -\$0.5 + \$0.6 + \$1 = \$1.1
+\]</span></li>
+<li>Suppose that <span class="math inline">\(A\)</span> is false and
+<span class="math inline">\(B\)</span> is true. Neither of us win
+anything from our tickets. Hence: <span class="math display">\[
+\text{End of the Day Earnings} = -\$0.5 + \$0.6 = \$0.1
+\]</span></li>
+<li>Suppose that <span class="math inline">\(A\)</span> is false and
+<span class="math inline">\(B\)</span> is false. Neither of us win
+anything from our tickets. Hence: <span class="math display">\[
+\text{End of the Day Earnings} = -\$0.5 + \$0.6 = \$0.1
+\]</span></li>
+</ul>
+<p>We see here that no matter how <span class="math inline">\(A\)</span>
+and <span class="math inline">\(B\)</span> turn out, I always come out
+with a profit. Also notice that in this case, we have one possibility in
+which we earn more than in the other possibilities. When <span
+class="math inline">\(A\)</span> is true and <span
+class="math inline">\(B\)</span> is false, we end up earning <span
+class="math inline">\(\$1.1\)</span> as opposed to just <span
+class="math inline">\(\$0.1\)</span>. This shows that in a Dutch Book,
+its not the case that we always make the same amount of money in profit;
+it is enough to show that we always do make a profit (not necessarily
+the same profit all the time).</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

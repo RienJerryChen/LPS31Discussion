@@ -1,0 +1,154 @@
+---
+title: "Week Nine Discussion Notes"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    collapsed: false
+    number_sections: false
+    toc_depth: 1
+    #code_folding: hide
+---
+
+# Betting and Probabilities
+
+We now consider posted bets. When someone (the bookie) posts a bet, for example, with odds $2:3$ for Bob winning, this means that you have to pay $\$2$ in order to join the bet for a total pot of $\$5$. The bookie will pay you $\$3$ if Bob wins and you lose $\$2$ if Bob loses. We may consider the situation a bit more abstractly though. Suppose the bookie is walking around with a sign saying "ODDS: 2:3". You can buy as many "bets" so to speak from the bookie. Every ticket costs $\$2$, and the payout of every ticket (if you win) is $\$3$ (as well as the price of your ticket back, so $\$5$ is what the Bookie actually hands you if you win). For example, if we buy 10 tickets, then we pay $10 \times \$2 = \$20$. All of these tickets are the same, we win if Bob wins, and we lose if Bob loses. So if Bob wins, we get $\$5 \times 10 = \$50$ dollars in total from the Bookie, with a total profit of $\$30$ (since we paid $\$20$ to get the tickets in the first place). If Bob loses, then we just lose our $\$20$. This is the more general situation that we often consider: buying multiple tickets to enter a bet.
+
+Now there is an intimate relationship between bets and probabilities. Suppose I do not know what you think the probability of Bob winning is. I can pose to you some bets in order to try to tease out your probabilities: I say to you that I'll enter into a bet with you on whether or not Bob will win. I'm willing to put down $\$30$ if Bob loses. Suppose that you say you are willing to put down $\$20$ (in favour of Bob winning). By saying that that you are willing to put down $\$20$ in response to my $\$30$ you have communicated to me all the information I need to deduce what your probability of Bob winning is. According to decision theory, this is due to a crucial assumption: you would not say that you are willing to put up $\$20$ if you did not think that the bet was unfair to you. In other words, you think the bet is fair when you put up $\$20$ against my $\$30$. Since the expected utility of both of us not betting is $\$0$ (neither of us gain nor lose money) and a fair bet means that $EU(\text{bet}) = EU(\text{Don't Bet})$, this means that $EU(bet) = 0$. Then by the definition of expected utility:
+$$
+EU(\text{bet}) = P(\text{Bob Wins})U(\text{Bet & Bob Wins}) + P(\text{Bob Loses})U(\text{Bet & Bob Loses}) - \text{cost} 
+$$
+We will represent it this way. Here we add the "cost" term to represent that this is the amount of money which you put into the pot to participate in the bet in the first place. Here we will count the utilities in terms of how much money is gained:
+$$
+\begin{align}
+EU(\text{bet}) &= P(\text{Bob Wins})\$ 30 + P(\text{Bob Loses})\$0 - \$20\\
+&= P(\text{Bob Wins}) \$30 - \$20
+\end{align}
+$$
+then recall that since $EU(\text{bet}) = 0$, we have that:
+$$
+ 0 = P(\text{Bob Wins}) \$30 - \$20
+$$
+From which it follows that:
+$$
+P(\text{Bob Wins}) = \frac{\$20}{\$30} = \frac{2}{3}
+$$
+
+Generally, if we want to know what probability some person, say person Q, assigns to some proposition $A$, then we may pose to them a bet on $A$. Suppose we say that we are willing to put up $\$x$ if $A$ turns out to be false. If that person says they are willing to put up $\$y$ (in favour of $A$) to participate in this bet, then:
+$$
+EU(\text{bet}) = P(A)U(\text{Bet & A}) + P(\sim A) U(\text{bet & }\sim A) - c
+$$
+Since the utility of betting and $~A$ means that Q gains no money we have that $U(\text{bet &}\sim A) = 0$. So we get:
+$$
+EU(\text{bet}) = P(A) U(\text{Bet &} A) - c 
+$$
+Since Q says that they are willing to put up $\$y$ to participate in the bet this means that Q thinks that $EU(\text{bet}) = EU(\text{Don't Bet}) = 0$. Therefore we get:
+$$
+0 = P(A)U(\text{Bet & }A) - c
+$$
+The utility for Q for betting and it being the case that $A$ is $\$x$ (this is the amount that they win) and the total cost for them is $\$y$ (this is the amount that they paid). Therefore:
+$$
+0 = P(A)\$x - \$y
+$$
+In lecture, you would have seen this as:
+$$
+EU(\text{Buy Bet}) = xp - c
+$$
+It's the same equation, I just use $\$x$ for $x$ and $\$y$ for $c$ instead. The expected utility of buying the bet will be $0$ when you are considering a fair bet (since to be a fair bet, $EU(\text{Buy Bet}) = EU(\text{Don't Buy Bet})$ where $EU(\text{Don't Buy Bet}) = 0$). In any case, solving for $P(A)$, we get:
+$$
+P(A) = \frac{\$y}{\$x} = \frac{y}{x}
+$$
+
+# Dutch Books
+
+A dutch book is a collection of bets (e.g., a bet on $A$, a bet on $B$, a bet on $C$, and so on) such that there is a way to guarantee a loss to the individual who holds such bets. (Remember, a collection of bets expresses a collection of probabilities! To say that you are willing to bet $\$x$ with another person putting up $\$y$, is sufficient to determine a probability!).
+
+Every Dutch Book problem you encounter will have the following structure and solution:
+
+1. You will be given some probabilities of some propositions (which most likely will violate a probability rule which you know) that some person holds. We will call this person Jack. You need to first convert these probabilities into bets (this collection of bets is the Dutch Book). In this explanation, I presuppose that you are only given probabilities of three propositions: $A,B,C$.
+
+2. To convert the probabilities into bets, consider $\$1$-if-$Z$ tickets for any proposition $Z$. These are tickets such that if person A sells a $\$1$-if-$Z$ ticket to person B for $\$c$ and it is the case that $Z$ is true, then person A has to give person B $\$1$. If $Z$ is not true (i.e., false), then person A does not have to pay person B any money. If person $A$ buys a $\$1$-if-$Z$ ticket from person $B$ for $\$c$ and it is the case that $Z$ is true, then person B has to pay person A $\$1$. If $Z$ is not true, then person B does not pay person A any money.
+
+3. Find the cost of the $\$1$-if-$A$, $\$1$-if-$B$, $\$1$-if-$C$ that Jack would think is fair. To do this we use the formula from earlier:
+$$
+0 = xp - c
+$$
+Here $x$ = $\$1$ and $p$ is the probability of whichever proposition the ticket is considering. *What you want to do is solve for $c$*. For example, in the case of the $\$1$-if-$A$ ticket we  get:
+$$
+0 = xP(A) - c
+$$
+Then solve for $c$ to get:
+$$
+c = \$P(A)
+$$
+(since $x = \$1$). This is why I picked the payoff from the tickets to be $\$1$. In such a case, ***the cost of a $\$1$-if-$Z$ ticket is just $\$P(Z)$***. So the cost of the $\$1$-if-$B$ ticket is just $\$ P(B)$. The cost of the $\$1$-if-$C$ ticket is just $\$ P(C)$.
+
+4. Now that we know the costs of the ticket which Jack thinks is fair, we need to buy and sell a combination of these tickets such that we are always guaranteed a profit from Jack. This is better illustrated by considering a number of examples:
+
+**[Example One]** Suppose that Jack holds the following probabilities $P(A) = 0.7$ and $P(\sim A) = 0.5$. Since $A$ and $\sim A$ are mutually exclusive, we have $P(A \lor \sim A) = 1.2$. Here we violate the negation rule and the rule which states that no proposition can have probability greater than one.
+
+So, we have three tickets to consider here:
+
+- $\$1$-if-$A$ ticket which costs $\$0.7$
+- $\$1$-if-$\sim A$ ticket which costs $\$0.5$
+- $\$1$-if-$(A\lor\sim A)$ ticket which costs $\$1.2$
+
+Now, one of the Dutch Books here involves simply selling to Jack, a $\$1$-if-$(A \lor \sim A)$ ticket. That is, Jack will pay me $\$1.2$ to buy a $\$1$-if-$(A\lor \sim A)$ ticket. Now consider what happens:
+
+- Suppose $A$ is true. Then $(A \lor \sim A)$ is true. Since Jack bought a $\$1$-if-$(A \lor \sim A)$ ticket from me, I have to pay him $\$1$. At the end of the day I got:
+$$
+\text{End of the Day Earnings} = \$ 1.2 - \$ 1 = \$0.2
+$$
+- Suppose $\sim A$ is true. Then $(A \lor \sim A)$ is true. Since Jack bought a $\$1$-if-$(A \lor \sim A)$ ticket from me, I have to pay him $\$1$. At the end of the day I got:
+$$
+\text{End of the Day Earnings} = \$ 1.2 - \$ 1 = \$0.2
+$$
+
+This shows that no matter what happens (i.e., whether or not I am in a world where $A$ is true or $\sim A$ is true), I end the day with $\$0.2$ in profit. Hence, Jack gets Dutch Booked.
+
+**[Example Two]** Suppose that Jack holds the following probabilities: $P(A) = 0.3$ and $P(\sim A) = 0.2$. Here there are only two tickets to consider:
+
+- $\$1$-if-$A$ ticket which costs $\$0.3$
+- $\$1$-if-$\sim A$ ticket which costs $\$0.2$
+
+Now for the Dutch Book, you can buy one $\$1$-if-$A$ ticket from Jack for $\$0.3$ and one $\$1$-if-$\sim A$ ticket from Jack for $\$0.2$. Consider what happens:
+
+- If $A$ is true then because I own a $\$1$-if-$A$ ticket then Jack has to pay me $\$1$. So:
+$$
+\text{End of the Day Earnings} = -\$0.3 - \$0.2 + \$1 = \$0.5
+$$
+- If $\sim A$ is true then because I own a $\$1$-if-$\sim A$ ticket then Jack has to pay me $\$1$. So:
+$$
+\text{End of the Day Earnings} = -\$0.3 - \$0.2 + \$1 = \$0.5
+$$
+
+No matter what happens (i.e., either $A$ or $\sim A$), I come out with $\$0.5$ in profit. So Jack gets Dutch Booked.
+
+**[Example Three]** Suppose that Jack holds the following probabilities: $P(A) = 0.5$ and $P(A \& B) = 0.6$. It is not entirely obvious that this violates any rule, but in fact it does violate a consequence of the rules. It turns out that the probability of any proposition cannot be less than the probability of that same proposition conjoined with a different proposition. That is, $P(Z) \geq P(Z \& W)$ for any propositions $Z$ and $W$. But lets see how this violation gets us a Dutch Book.
+
+Here there are two tickets to consider:
+
+- $\$1$-if-$A$ ticket which costs $\$0.5$
+- $\$1$-if-$(A \& B)$ ticket which costs $\$0.6$
+
+Here we want to buy from Jack a $\$1$-if-$A$ ticket for $\$0.5$ and to sell to Jack a $\$1$-if-$(A \& B)$ ticket for $\$0.6$. Lets see how this plays out:
+
+- Suppose that $A$ is true and $B$ is true. Since I hold a $\$1$-if-$A$ ticket and $A$ is true, Jack has to pay me $\$1$. Since Jack holds a $\$1$-if-$(A\& B)$ ticket and $A$ and $B$ are true, I have to pay Jack $\$1$. We end up with:
+$$
+\text{End of the Day Earnings} = -\$0.5 + \$0.6 +\$1 -\$1 = \$0.1
+$$
+- Suppose that $A$ is true and $B$ is false. Since I hold a $\$1$-if-$A$ ticket and $A$ is true, Jack has to pay me $\$1$. Jack gets nothing from his $\$1$-if-$(A \& B)$ ticket since $B$ is false (hence the conjunction is false). So:
+$$
+\text{End of the Day Earnings} = -\$0.5 + \$0.6 + \$1 = \$1.1
+$$
+- Suppose that $A$ is false and $B$ is true. Neither of us win anything from our tickets. Hence:
+$$
+\text{End of the Day Earnings} = -\$0.5 + \$0.6 = \$0.1
+$$
+- Suppose that $A$ is false and $B$ is false. Neither of us win anything from our tickets. Hence: 
+$$
+\text{End of the Day Earnings} = -\$0.5 + \$0.6 = \$0.1
+$$
+
+We see here that no matter how $A$ and $B$ turn out, I always come out with a profit. Also notice that in this case, we have one possibility in which we earn more than in the other possibilities. When $A$ is true and $B$ is false, we end up earning $\$1.1$ as opposed to just $\$0.1$. This shows that in a Dutch Book, its not the case that we always make the same amount of money in profit; it is enough to show that we always do make a profit (not necessarily the same profit all the time). 
+
